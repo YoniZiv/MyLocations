@@ -12,6 +12,7 @@
     "react-router-dom": "^4.1.2",
     "react-router-page-transition": "^3.0.2",
     "react-scripts": "1.0.10",
+    "react-select": "^1.0.0-rc.10",
     "redux": "^3.7.2",
     "styled-components": "^2.1.1"
   },

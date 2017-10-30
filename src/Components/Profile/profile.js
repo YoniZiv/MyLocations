@@ -3,12 +3,14 @@ import Header from "../Header/header";
 import AppContainer from "../../StyledComponents/app-container";
 import headerText from "../../assets/header-text";
 import Slavs from "../Slavs/slavs";
+import Location from "../Location/location";
 
 const Profile = () => (
   <section id="app-profile">
     <Header title={ headerText.Profile.title } subTitle={ headerText.Profile.subTitle } />
       <AppContainer>
-        <Slavs/>
+        {/*<Slavs/>*/}
+        <Location/>
       </AppContainer>
   </section>
 )

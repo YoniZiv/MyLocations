@@ -5,8 +5,8 @@ import AppContainer from "../../StyledComponents/app-container";
 import HamCarousel from "../Carousel/carousel";
 import LocationsMap from "../Map/map";
 import {Col, Grid, Row} from "react-bootstrap";
-import {Location} from "../../Location/location";
-import Category from "../../Category/category";
+import {Location} from "../Location/location";
+import Category from "../Category/category";
 import {Categories} from "../Categories/Categories";
 
 const Home = () => (
@@ -20,9 +20,9 @@ const Home = () => (
                     </Col>
                 </Row>
                 <Row>
-                    <Col style={{ paddingLeft: '0' }} xl={12} md={12} >
-                        <LocationsMap  />
-                    </Col>
+                    {/*<Col style={{ paddingLeft: '0' }} xl={12} md={12} >*/}
+                        {/*<LocationsMap  />*/}
+                    {/*</Col>*/}
                     {/*<Col xl={6} md={6}>*/}
                         {/*<input type="text"/>*/}
                     {/*</Col>*/}

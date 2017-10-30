@@ -1,5 +1,13 @@
-const rootReducer = () => {
+import {combineReducers} from "redux ";
+import {categories} from "./categories";
 
-}
+const rootReducer = combineReducers({
+    categories
+})
 
-export default rootReducer();
+export default rootReducer
+
+
+
+
+// export default rootReducer();

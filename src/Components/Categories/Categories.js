@@ -1,5 +1,5 @@
 import React from "react";
-import Category from "../../Category/category";
+import Category from "../Category/category";
 import {Button, Grid, Row} from "react-bootstrap";
 export class Categories extends React.Component {
 
