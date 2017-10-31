@@ -8,4 +8,9 @@ export const addNewCategory = (category) => ({
 export const editCategory = (oldName, newName) => ({
     type: actionTypes.EDIT_CATEGORY,
     payload: {oldName,newName}
+});
+
+export const addNewLocation = (location) => ({
+    type: actionTypes.ADD_LOCATION,
+    payload: {location}
 })

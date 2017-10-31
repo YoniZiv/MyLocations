@@ -1,128 +1,128 @@
 import React from 'react'
-import {
-    Accordion, Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Panel, Row,
-    Thumbnail
-} from "react-bootstrap";
-import LocationsMap from "../Map/map";
-import Select from 'react-select';
-import Category from "../Category/category";
 import axios from 'axios'
 
-// Be sure to include styles at some point, probably during your bootstrapping
-import 'react-select/dist/react-select.css';
+import {
+    Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Row, Thumbnail,
+    Well
+} from "react-bootstrap";
 import {connect} from "react-redux";
 
-class Location extends React.Component {
-
+class Location extends React.Component{
     constructor(props) {
         super(props);
         console.log(props.categories);
+
         this.state = {
-            options: [
-                {value: 'one', label: 'One'},
-                {value: 'two', label: 'Two'},
-                {value: 'three', label: 'Three'},
-                {value: 'four', label: 'Four'},
-                {value: 'five', label: 'Five'},
-                {value: 'six', label: 'Six'}
-            ],
 
+            photoUrl: this.getPicture(),
+            editMode: this.props.name? false : true,
+
+            locationName: this.props.name || '',
+            address: this.props.address ,
+            lat: this.props.lat || '',
+            long: this.props.long || '',
+
+            tempLocationName : this.props.name || '',
+            tempAddress: this.props.address || ''
         }
+        window.curState = this.state
     }
 
-    logChange = (val) => {
-        console.log('Selected: ', val);
-        this.setState({value: val})
-    }
 
     getPicture = () => {
         let response
-        const urlPhotoData = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
+        const urlPhotoData = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ this.props.lat +','+ this.props.long+'&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
         const res = axios.get(urlPhotoData).then((res) => {
-          const photoRef = res.data.results[0].photos[0].photo_reference;
-           const urlPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='+ photoRef +'&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-           axios.get(urlPhoto).then((res) => response = res).catch((err2) => console.log("ERRRRRRR",err2) );
+            const photoRef = res.data.results[0].photos[0].photo_reference;
+            const urlPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=190&photoreference='+ photoRef +'&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
+            console.log(urlPhoto)
+            axios.get(urlPhoto).then((res) => this.setState({ photoUrl:res.config.url }) ).catch((err2) => console.log("ERRRRRRR",err2) );
         }).catch((err) => console.log( "ERRor", err))
-        setTimeout(() => {
-            console.log(response.config.url);
-        },500)
+
+    }
+
+    // asdasddasdasdasdasdasdasdasdasdasdasdasdasdgasdsdadsasdadasdasdasdasd
+
+    saveCategory = (props) => {
+        this.setState({
+            categoryName: this.state.tempText,
+            editMode: false
+        })
+        // this.props.addNewCategory(this.state.tempText);
+        this.props.editCategory(this.state.categoryName, this.state.tempText);
+
+    }
+
+    EditCard = () => {
+        this.setState({
+            editMode: true
+        });
+    }
+
+    DeleteCategory = (categoryName) => {
+        this.props.deleteFunc(categoryName);
+    }
+
+    ChangeText = (event) => {
+        this.setState({
+            tempText: event.target.value
+        })
+    }
+
+    _editCategory() {
+
+        return (
+            <section id="EditCategory">
+                <Col xs={4} md={4}>
+                    <Thumbnail >
+                        <h3>New Category</h3>
+                        <form>
+                            <FormGroup controlId="formValidationSuccess1" validationState={null}>
+                                <ControlLabel>Input with success</ControlLabel>
+                                <FormControl type="text" placeholder="Category Name"
+                                             inputRef={input => this.catName = input}
+                                             value={ this.state.tempText } onChange={ this.ChangeText }/>
+                                <HelpBlock>Help text with validation state.</HelpBlock>
+                                <Button bsStyle="primary"
+                                        onClick={ this.saveCategory.bind(this) }>Apply</Button>&nbsp;
+                                <Button bsStyle="danger">Cancel</Button>
+                            </FormGroup>
+                        </form>
+                    </Thumbnail>
+                </Col>
+            </section>
+        );
+    }
+
+    _finishedLocation() {
+        return (
+            <section id="finishedLocation">
+                <Col xs={4} md={4}>
+                    <Thumbnail src={ this.state.photoUrl }>
+                            <h3>{ this.state.locationName }</h3>
+                            <h4>{ this.state.address }</h4>
+                            <h5> {this.state.lat} X {this.state.long}</h5>
+                        <Button bsStyle="primary" onClick={ this.EditCard.bind(this) }>Edit</Button>&nbsp;
+                        <Button bsStyle="danger" onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
+                    </Thumbnail>
+                </Col>
+            </section>
+        );
     }
 
 
     render() {
         return (
             <section id="location">
-                <Grid>
-                    <Row>
-                        <Col xs={6} md={8}>
-                            <LocationsMap/>
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <Thumbnail>
-                                <h3>New Location</h3>
-                                <form>
-                                    <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Location Name"/>
-                                        <HelpBlock></HelpBlock>
-                                    </FormGroup>
-                                    <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Address"/>
-                                        <HelpBlock></HelpBlock>
-                                    </FormGroup>
-                                    <FormGroup controlId="formControlsSelect">
-                                        <Select
-                                            name="form-field-name"
-                                            value={this.state.value}
-                                            options={this.state.options}
-                                            multi
-                                            onChange={this.logChange}
-                                        />
-                                    </FormGroup>
-                                    <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Latitude"/>
-                                        <HelpBlock></HelpBlock>
-                                    </FormGroup>
-                                    <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Longitude"/>
-                                        <HelpBlock></HelpBlock>
-                                    </FormGroup>
-                                </form>
-                                {/*<Button bsStyle="primary">Like</Button>&nbsp;*/}
-                                {/*<Button bsStyle="default">Buy</Button>*/}
-                                {/*</p>*/}
-                            </Thumbnail>
-                        </Col>
-
-                    </Row>
-                    <Row>
-                        <Col xs={12} md={12}>
-                            <Accordion>
-                                { this.props.categories.map((name) => {
-                                    return (
-                                        name &&
-                                        <Panel header={ name } eventKey="1">
-                                            <img src={this.state.img}/>
-                                            {this.props.locations.map((location) => {
-                                                return (
-                                                    location.catName === name ? this.getPicture() : null
-                                                );
-                                            })}
-                                        </Panel>
-                                    );
-                                })}
-                            </Accordion>
-                        </Col>
-                    </Row>
-                </Grid>
+                { this.state.editMode ? this._editCategory() : this._finishedLocation() }
             </section>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories.CategoriesNames,
-    locations: state.categories.Locations
+    categories: state.categories.CategoriesNames
 });
 
-export default connect(mapStateToProps, {})(Location)
+export default connect(mapStateToProps, {  })(Location)
 

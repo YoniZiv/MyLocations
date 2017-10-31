@@ -5,7 +5,7 @@ import AppContainer from "../../StyledComponents/app-container";
 import HamCarousel from "../Carousel/carousel";
 import LocationsMap from "../Map/map";
 import {Col, Grid, Row} from "react-bootstrap";
-import {Location} from "../Location/location";
+import {Locations} from "../Locations/locations";
 import Category from "../Category/category";
 import Categories from "../Categories/Categories";
 

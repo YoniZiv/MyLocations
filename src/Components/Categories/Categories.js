@@ -38,14 +38,16 @@ class Categories extends React.Component {
     }
 
     render() {
+        console.log(this.props.categories)
+        debugger
         return (
             <section id="Categories">
                 <Button onClick={ this.NewCategory}> Add </Button>
                 <Grid>
                     <Row>
-                        { this.props.categories.map( (name) => {
+                        { this.props.categories.map( (location) => {
                             return (
-                                <Category name={ name } />
+                                <Category name={ location.catName } />
                             );
                         })}
                     </Row>
@@ -56,7 +58,7 @@ class Categories extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories.CategoriesNames
+    categories: state.categories.Locations
 });
 
 export default connect(mapStateToProps,{ addNewCategory })(Categories)

@@ -96,7 +96,7 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories.CategoriesNames
+    categories: state.categories.Locations
 });
 
 export default connect(mapStateToProps, { addNewCategory, editCategory })(Category)
