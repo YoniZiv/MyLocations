@@ -7,7 +7,7 @@ import LocationsMap from "../Map/map";
 import {Col, Grid, Row} from "react-bootstrap";
 import {Location} from "../Location/location";
 import Category from "../Category/category";
-import {Categories} from "../Categories/Categories";
+import Categories from "../Categories/Categories";
 
 const Home = () => (
     <section id="app-home">

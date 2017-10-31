@@ -1,34 +1,40 @@
 import React from "react";
 import Category from "../Category/category";
 import {Button, Grid, Row} from "react-bootstrap";
-export class Categories extends React.Component {
+import {remove} from 'lodash';
+import {connect} from "react-redux";
+import {addNewCategory} from "../../Redux/Actions/categoriesActions";
+
+class Categories extends React.Component {
 
 
     constructor(props) {
         super(props);
-
+        console.log(props.categories)
         this.state = {
             CategoriesList: []
         }
     }
 
-    DeleteCategory = (e) => {
+    // componentWillMount() {
+    //     this.props.addNewCategory('yoni')
+    // }
 
-        console.log('before' , this.state.CategoriesList)
-        const removeIndex = this.state.CategoriesList.indexOf(e.target);
-        const newList = this.state.CategoriesList.splice(removeIndex,1);
-        this.setState({
-            CategoriesList: newList
-        });
-        console.log('after' , this.state.CategoriesList);
+    DeleteCategory = (categoryName) => {
+        const { CategoriesList } = this.state;
+        console.log('before' , categoryName)
+        // remove(CategoriesList, (category) =>  )
+        // const removeIndex = CategoriesList.indexOf(e.target);
+        // const newList = CategoriesList.splice(removeIndex,1);
+        // this.setState({
+        //     CategoriesList: newList
+        // });
+        // console.log('after' , CategoriesList);
     }
 
+
     NewCategory = () => {
-        let CatList = this.state.CategoriesList;
-        CatList.push(<Category deleteFunc={ this.DeleteCategory.bind(this) }/>);
-        this.setState({
-            CategoriesList: CatList
-        })
+       this.props.addNewCategory('');
     }
 
     render() {
@@ -37,10 +43,20 @@ export class Categories extends React.Component {
                 <Button onClick={ this.NewCategory}> Add </Button>
                 <Grid>
                     <Row>
-                        { this.state.CategoriesList }
+                        { this.props.categories.map( (name) => {
+                            return (
+                                <Category name={ name } />
+                            );
+                        })}
                     </Row>
                 </Grid>
             </section>
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    categories: state.categories.CategoriesNames
+});
+
+export default connect(mapStateToProps,{ addNewCategory })(Categories)

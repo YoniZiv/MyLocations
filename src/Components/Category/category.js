@@ -3,17 +3,19 @@ import {
     Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Row, Thumbnail,
     Well
 } from "react-bootstrap";
+import {connect} from "react-redux";
+import {addNewCategory, editCategory} from "../../Redux/Actions/categoriesActions";
 
 
-export default class Category extends React.Component {
+class Category extends React.Component {
 
     constructor(props) {
         super(props);
-
+        console.log(props.categories);
         this.state = {
-            editMode: true,
-            categoryName: '',
-            tempText: ''
+            editMode: this.props.name? false : true,
+            categoryName: this.props.name || '',
+            tempText: this.props.name || ''
         }
     }
 
@@ -22,6 +24,8 @@ export default class Category extends React.Component {
             categoryName: this.state.tempText,
             editMode: false
         })
+        // this.props.addNewCategory(this.state.tempText);
+        this.props.editCategory(this.state.categoryName, this.state.tempText);
 
     }
 
@@ -31,8 +35,8 @@ export default class Category extends React.Component {
         });
     }
 
-    DeleteCategory = (e) => {
-             this.props.deleteFunc(e.target);
+    DeleteCategory = (categoryName) => {
+             this.props.deleteFunc(categoryName);
     }
 
     ChangeText = (event) => {
@@ -74,7 +78,7 @@ export default class Category extends React.Component {
                     <Thumbnail>
                         <Well><h3>{ this.state.categoryName }</h3></Well>
                         <Button bsStyle="primary" onClick={ this.EditCard.bind(this) }>Edit</Button>&nbsp;
-                        <Button bsStyle="danger" onClick={this.DeleteCategory}>Delete</Button>
+                        <Button bsStyle="danger" onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
                     </Thumbnail>
                 </Col>
             </section>
@@ -91,3 +95,8 @@ export default class Category extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    categories: state.categories.CategoriesNames
+});
+
+export default connect(mapStateToProps, { addNewCategory, editCategory })(Category)
