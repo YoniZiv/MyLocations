@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Accordion, Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Panel, Row,
+    Accordion, Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Panel, PanelGroup, Row,
     Thumbnail
 } from "react-bootstrap";
 import LocationsMap from "../Map/map";
@@ -59,7 +59,7 @@ class Locations extends React.Component {
             address: this.state.tempAddress
         })
         this.props.addNewLocation({
-            cats: this.state.options,
+            cats: this.state.value,
             name: this.state.tempName,
             address: this.state.tempAddress,
             lat: this.props.map.markerLat,
@@ -69,6 +69,7 @@ class Locations extends React.Component {
 
     render() {
         const keys = Object.keys(this.props.places)
+        let i = 0;
         return (
             <section id="locations">
                 <Grid>
@@ -118,11 +119,11 @@ class Locations extends React.Component {
                     </Row>
                     <Row>
                         <Col xs={12} md={12}>
-                            <Accordion>
+                            <PanelGroup>
 
                                 {_.map(this.props.places,(place,placeName) => {
                                     return (
-                                        <Panel header={placeName} eventkey={ placeName }>
+                                        <Panel collapsible header={placeName} eventKey={++i} >
                                             {place.map((location) => {
                                                 return (
                                                     <Location name={location.name}
@@ -159,7 +160,7 @@ class Locations extends React.Component {
                                 {/*</Panel>*/}
                                 {/*);*/}
                                 {/*})}*/}
-                            </Accordion>
+                            </PanelGroup>
                         </Col>
                     </Row>
                 </Grid>
