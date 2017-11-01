@@ -20,7 +20,6 @@ class Locations extends React.Component {
     constructor(props) {
         super(props);
         const listOfCategories = _.map(props.cats, (cat) => {
-
             return ({value: cat, label: cat});
         })
         this.state = {
@@ -34,6 +33,8 @@ class Locations extends React.Component {
 
         }
     }
+
+
 
     logChange = (val) => {
         console.log('Selected: ', val);
@@ -61,8 +62,8 @@ class Locations extends React.Component {
             cats: this.state.options,
             name: this.state.tempName,
             address: this.state.tempAddress,
-            lat: this.state.lat,
-            long: this.state.long
+            lat: this.props.map.markerLat,
+            long: this.props.map.markerLng
         })
     }
 
@@ -99,11 +100,11 @@ class Locations extends React.Component {
                                         />
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Latitude" value={this.state.tempText}/>
+                                        <FormControl type="text" placeholder="Latitude" value={this.props.map.markerLat} disabled/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Longitude" value={this.state.tempText}/>
+                                        <FormControl type="text" placeholder="Longitude" value={this.props.map.markerLng} disabled/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <Button bsStyle="primary" onClick={this.saveLocation}>Add</Button>
@@ -169,8 +170,10 @@ class Locations extends React.Component {
 
 const mapStateToProps = (state) => ({
     places: _.groupBy(state.locations.locations, (cat) => cat.category),
-    cats: state.categories.categories
+    cats: state.categories.categories,
+    map: state.map
 });
+
 
 export default connect(mapStateToProps, {addNewLocation})(Locations)
 

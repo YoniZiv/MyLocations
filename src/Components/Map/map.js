@@ -3,6 +3,7 @@ import './map.css';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 // import { changeMapLocation } from '../../redux/actions/locations';
 import { connect } from 'react-redux';
+import {changeMapLocation} from "../../Redux/Actions/mapActions";
 
 
 class LocationsMap extends React.Component {
@@ -34,6 +35,8 @@ class LocationsMap extends React.Component {
             markerLng: clickEvent.latLng.lng(),
             initialMapCenter: {lat: clickEvent.latLng.lat(), lng: clickEvent.latLng.lng()}
         });
+        this.props.changeMapLocation(this.state.markerLat, this.state.markerLng);
+
     //     // this.props.changeMapLocation({
     //     //     lat: clickEvent.latLng.lat(),
     //     //     lng: clickEvent.latLng.lng()
@@ -77,6 +80,5 @@ class LocationsMap extends React.Component {
 export default GoogleApiWrapper({
     apiKey: ('AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ')
 })(
-    // connect(null, null)(LocationsMap)
-    LocationsMap
+    connect(null, { changeMapLocation })(LocationsMap)
 )

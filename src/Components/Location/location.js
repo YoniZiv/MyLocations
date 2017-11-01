@@ -93,7 +93,7 @@ class Location extends React.Component {
         return (
             <section id="finishedLocation">
                 <Col xs={4} md={4}>
-                    <Thumbnail src={ this.state.photoUrl }>
+                    <Thumbnail src={ this.state.photoUrl || 'https://cdn.dribbble.com/users/127072/screenshots/1582404/pin-eye2.gif'}  >
                         <h3>{ this.state.locationName }</h3>
                         <h4>{ this.state.address }</h4>
                         <h5> {this.state.lat} X {this.state.long}</h5>
