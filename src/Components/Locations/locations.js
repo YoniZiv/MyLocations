@@ -13,27 +13,26 @@ import 'react-select/dist/react-select.css';
 import {connect} from "react-redux";
 import Location from "../Location/location";
 import {addNewLocation} from "../../Redux/Actions/categoriesActions";
+import * as _ from "lodash";
 
 class Locations extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props.categories);
-        const listOfCategories = props.locations.map((loc) => ({value: loc.catName, label: loc.catName }) )
-        this.state = {
-            options: listOfCategories,
+        const listOfCategories = _.map(props.cats, (cat) => {
 
+            return ({value: cat, label: cat});
+        })
+        this.state = {
+             options: listOfCategories,
             name: '',
             address: '',
 
             tempName: '',
-            tempAddress: ''
+            tempAddress: '',
+            catList: Object.keys(props.places)
 
         }
-        this.setState({
-            options: listOfCategories
-        })
-        console.log(this.state.options)
     }
 
     logChange = (val) => {
@@ -41,18 +40,6 @@ class Locations extends React.Component {
         this.setState({value: val})
     }
 
-    getPicture = () => {
-        let response
-        const urlPhotoData = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-        const res = axios.get(urlPhotoData).then((res) => {
-            const photoRef = res.data.results[0].photos[0].photo_reference;
-            const urlPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoRef + '&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-            axios.get(urlPhoto).then((res) => response = res).catch((err2) => console.log("ERRRRRRR", err2));
-        }).catch((err) => console.log("ERRor", err))
-        setTimeout(() => {
-            console.log(response.config.url);
-        }, 1000)
-    }
 
     ChangeText = (e, type) => {
         switch (type) {
@@ -70,7 +57,6 @@ class Locations extends React.Component {
             name: this.state.tempName,
             address: this.state.tempAddress
         })
-        console.log('baba', this.state.tempName)
         this.props.addNewLocation({
             cats: this.state.options,
             name: this.state.tempName,
@@ -81,6 +67,7 @@ class Locations extends React.Component {
     }
 
     render() {
+        const keys = Object.keys(this.props.places)
         return (
             <section id="locations">
                 <Grid>
@@ -132,10 +119,10 @@ class Locations extends React.Component {
                         <Col xs={12} md={12}>
                             <Accordion>
 
-                                {this.props.locations.map((category) => {
+                                {_.map(this.props.places,(place,placeName) => {
                                     return (
-                                        <Panel header={category.catName} eventkey="1">
-                                            {category.locations.map((location) => {
+                                        <Panel header={placeName} eventkey={ placeName }>
+                                            {place.map((location) => {
                                                 return (
                                                     <Location name={location.name}
                                                               address={location.address}
@@ -146,7 +133,6 @@ class Locations extends React.Component {
                                         </Panel>
                                     )
                                 })}
-
                                 {/*{ this.props.categories.map((name) => {*/}
                                 {/*return (*/}
                                 {/*name &&*/}
@@ -182,8 +168,8 @@ class Locations extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories.CategoriesNames,
-    locations: state.categories.Locations
+    places: _.groupBy(state.locations.locations, (cat) => cat.category),
+    cats: state.categories.categories
 });
 
 export default connect(mapStateToProps, {addNewLocation})(Locations)

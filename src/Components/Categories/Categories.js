@@ -4,15 +4,15 @@ import {Button, Grid, Row} from "react-bootstrap";
 import {remove} from 'lodash';
 import {connect} from "react-redux";
 import {addNewCategory} from "../../Redux/Actions/categoriesActions";
+import * as _ from "lodash";
 
 class Categories extends React.Component {
 
 
     constructor(props) {
         super(props);
-        console.log(props.categories)
         this.state = {
-            CategoriesList: []
+            // CategoriesList: Object.keys(props.places) || []
         }
     }
 
@@ -38,16 +38,14 @@ class Categories extends React.Component {
     }
 
     render() {
-        console.log(this.props.categories)
-        debugger
         return (
             <section id="Categories">
                 <Button onClick={ this.NewCategory}> Add </Button>
                 <Grid>
                     <Row>
-                        { this.props.categories.map( (location) => {
+                        { this.props.categories.map( (cat) => {
                             return (
-                                <Category name={ location.catName } />
+                                <Category name={ cat } />
                             );
                         })}
                     </Row>
@@ -58,7 +56,7 @@ class Categories extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories.Locations
+    categories: state.categories.categories
 });
 
 export default connect(mapStateToProps,{ addNewCategory })(Categories)

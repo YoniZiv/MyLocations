@@ -27,16 +27,18 @@ class LocationsMap extends React.Component {
     //     }
     // }
 
-    // handleMapClick = (mapProps, map, clickEvent) => {
-    //     this.setState({
-    //         markerLat: clickEvent.latLng.lat(),
-    //         markerLng: clickEvent.latLng.lng()
-    //     });
+    handleMapClick = (mapProps, map, clickEvent) => {
+        // console.log('works')
+        this.setState({
+            markerLat: clickEvent.latLng.lat(),
+            markerLng: clickEvent.latLng.lng(),
+            initialMapCenter: {lat: clickEvent.latLng.lat(), lng: clickEvent.latLng.lng()}
+        });
     //     // this.props.changeMapLocation({
     //     //     lat: clickEvent.latLng.lat(),
     //     //     lng: clickEvent.latLng.lng()
     //     // });
-    // };
+    };
 
 
     render() {
@@ -56,9 +58,10 @@ class LocationsMap extends React.Component {
                  center={ initialMapCenter }
                  initialCenter={ initialMapCenter }
                  clickableIcons={false}
-                 // onClick={this.handleMapClick}>
-                >
-                {/*<Marker position={ (markerLng && markerLat) ? {lat: markerLat, lng: markerLng} : null}/>*/}
+                 onClick={this.handleMapClick}>
+
+                {/*<Marker position={ {lat: 31.778561, lng: 34.635831} }/>*/}
+                <Marker position={ (markerLng && markerLat) ? {lat: markerLat, lng: markerLng} : null}/>
 
             </Map>
         );

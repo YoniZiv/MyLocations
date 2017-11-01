@@ -7,41 +7,36 @@ import {
 } from "react-bootstrap";
 import {connect} from "react-redux";
 
-class Location extends React.Component{
+class Location extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props.categories);
-
         this.state = {
 
             photoUrl: this.getPicture(),
-            editMode: this.props.name? false : true,
+            editMode: this.props.name ? false : true,
 
             locationName: this.props.name || '',
-            address: this.props.address ,
+            address: this.props.address,
             lat: this.props.lat || '',
             long: this.props.long || '',
 
-            tempLocationName : this.props.name || '',
+            tempLocationName: this.props.name || '',
             tempAddress: this.props.address || ''
         }
-        window.curState = this.state
     }
 
 
     getPicture = () => {
-        let response
-        const urlPhotoData = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ this.props.lat +','+ this.props.long+'&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-        const res = axios.get(urlPhotoData).then((res) => {
+        const urlPhotoData = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.props.lat + ',' + this.props.long + '&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
+        axios.get(urlPhotoData).then((res) => {
             const photoRef = res.data.results[0].photos[0].photo_reference;
-            const urlPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=190&photoreference='+ photoRef +'&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
+            const urlPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=190&photoreference=' + photoRef + '&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
             console.log(urlPhoto)
-            axios.get(urlPhoto).then((res) => this.setState({ photoUrl:res.config.url }) ).catch((err2) => console.log("ERRRRRRR",err2) );
-        }).catch((err) => console.log( "ERRor", err))
+            axios.get(urlPhoto).then((res) => this.setState({photoUrl: res.config.url})).catch((err2) => console.log("ERRRRRRR", err2));
+        }).catch((err) => console.log("ERRor", err))
 
     }
 
-    // asdasddasdasdasdasdasdasdasdasdasdasdasdasdgasdsdadsasdadasdasdasdasd
 
     saveCategory = (props) => {
         this.setState({
@@ -99,11 +94,12 @@ class Location extends React.Component{
             <section id="finishedLocation">
                 <Col xs={4} md={4}>
                     <Thumbnail src={ this.state.photoUrl }>
-                            <h3>{ this.state.locationName }</h3>
-                            <h4>{ this.state.address }</h4>
-                            <h5> {this.state.lat} X {this.state.long}</h5>
+                        <h3>{ this.state.locationName }</h3>
+                        <h4>{ this.state.address }</h4>
+                        <h5> {this.state.lat} X {this.state.long}</h5>
                         <Button bsStyle="primary" onClick={ this.EditCard.bind(this) }>Edit</Button>&nbsp;
-                        <Button bsStyle="danger" onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
+                        <Button bsStyle="danger"
+                                onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
                     </Thumbnail>
                 </Col>
             </section>
@@ -121,8 +117,7 @@ class Location extends React.Component{
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories.CategoriesNames
 });
 
-export default connect(mapStateToProps, {  })(Location)
+export default connect(mapStateToProps, {})(Location)
 

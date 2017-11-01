@@ -11,7 +11,6 @@ class Category extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props.categories);
         this.state = {
             editMode: this.props.name? false : true,
             categoryName: this.props.name || '',
@@ -96,7 +95,6 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories.Locations
 });
 
 export default connect(mapStateToProps, { addNewCategory, editCategory })(Category)
