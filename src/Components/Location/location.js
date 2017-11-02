@@ -6,6 +6,14 @@ import {
     Well
 } from "react-bootstrap";
 import {connect} from "react-redux";
+import {editLocation} from "../../Redux/Actions/categoriesActions";
+import {Growl} from "primereact/components/growl/Growl";
+import {msgSaveLocation, msgCance} from "../../Redux/Constants/growlMessages"
+import {changeMapLocation} from "../../Redux/Actions/mapActions";
+import styled from 'styled-components';
+import {validateFields} from "../../common/validator";
+
+
 
 class Location extends React.Component {
     constructor(props) {
@@ -38,19 +46,29 @@ class Location extends React.Component {
     }
 
 
-    saveCategory = (props) => {
+    saveLocation = (props) => {
+
+        const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress, catNames: 'mock' }, 'location');
+        if (invalidFields.length > 0) {
+
+            this.setState({catNameValid: false})
+        }
+
         this.setState({
-            categoryName: this.state.tempText,
-            editMode: false
+            locationName: this.state.tempLocationName,
+            address: this.state.tempAddress,
+            editMode: false,
+            messages:[ msgSaveLocation ]
         })
         // this.props.addNewCategory(this.state.tempText);
-        this.props.editCategory(this.state.categoryName, this.state.tempText);
+        this.props.editLocation(this.state.tempLocationName, this.state.tempAddress);
 
     }
 
     EditCard = () => {
         this.setState({
-            editMode: true
+            editMode: true,
+            messages: []
         });
     }
 
@@ -72,7 +90,10 @@ class Location extends React.Component {
     }
 
     cancelEdit = () => {
-        this.setState({editMode: false})
+        this.setState({
+            editMode: false,
+            messages: [ msgCance ]
+        })
     }
     _editLocation() {
 
@@ -105,7 +126,7 @@ class Location extends React.Component {
                                              value={ this.state.long }/>
                                 <HelpBlock>Help text with validation state.</HelpBlock>
                                 <Button bsStyle="primary"
-                                        onClick={ this.saveCategory.bind(this) }>Apply</Button>&nbsp;
+                                        onClick={ this.saveLocation }>Apply</Button>&nbsp;
                                 <Button bsStyle="danger" onClick={ this.cancelEdit }>Cancel</Button>
                             </FormGroup>
                         </form>
@@ -115,18 +136,26 @@ class Location extends React.Component {
         );
     }
 
+
     _finishedLocation() {
         return (
             <section id="finishedLocation">
                 <Col xs={4} md={4}>
                     <Thumbnail
                         src={ this.state.photoUrl || 'https://tse3.mm.bing.net/th?id=OIP.90fnjLCc27dgkfXc4sEDZAEsEs&w=190&h=190&c=8&qlt=90&o=4&pid=1.7'}>
-                        <h3>{ this.state.locationName }</h3>
+                        <Button bsStyle="success"
+                                style={{borderRadius: '50%', outline: 'none'}}
+                                onClick={ () => this.props.changeMapLocation(this.state.lat, this.state.long) } >
+                            <i className="round fa fa-map-marker " aria-hidden="true"></i>
+                        </Button>
+                        <h3>{ this.state.locationName } </h3>
                         <h4>{ this.state.address }</h4>
                         <h5> {this.state.lat} X {this.state.long}</h5>
                         <Button bsStyle="primary" onClick={ this.EditCard.bind(this) }>Edit</Button>&nbsp;
                         <Button bsStyle="danger"
                                 onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
+
+
                     </Thumbnail>
                 </Col>
             </section>
@@ -137,6 +166,7 @@ class Location extends React.Component {
     render() {
         return (
             <section id="location">
+                <Growl value={this.state.messages}></Growl>
                 { this.state.editMode ? this._editLocation() : this._finishedLocation() }
             </section>
         )
@@ -145,5 +175,5 @@ class Location extends React.Component {
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, {})(Location)
+export default connect(mapStateToProps, { editLocation, changeMapLocation })(Location)
 

@@ -10,7 +10,16 @@ export const editCategory = (oldName, newName) => ({
     payload: {oldName,newName}
 });
 
+export const deleteCategory = (name) => ({
+    type: actionTypes.DELETE_CATEGORY,
+    payload: {name}
+})
 export const addNewLocation = (location) => ({
     type: actionTypes.ADD_LOCATION,
     payload: {location}
+})
+
+export const editLocation = (name,address) => ({
+    type: actionTypes.EDIT_LOCATION,
+    payload: {name, address}
 })

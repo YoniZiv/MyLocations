@@ -6,6 +6,9 @@ import Profile from "../Profile/profile";
 import Home from "../Home/home";
 import Login from "../Auth/Login/login";
 
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/omega/theme.css';
+import 'font-awesome/css/font-awesome.css';
 
 export class Main extends Component {
 

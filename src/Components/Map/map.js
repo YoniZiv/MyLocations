@@ -15,6 +15,8 @@ class LocationsMap extends React.Component {
             markerLat: null,
             markerLng: null,
         }
+
+
     }
 
     // componentWillReceiveProps(nextProps) {
@@ -33,7 +35,7 @@ class LocationsMap extends React.Component {
         this.setState({
             markerLat: clickEvent.latLng.lat(),
             markerLng: clickEvent.latLng.lng(),
-            initialMapCenter: {lat: clickEvent.latLng.lat(), lng: clickEvent.latLng.lng()}
+
         });
         this.props.changeMapLocation(this.state.markerLat, this.state.markerLng);
 
@@ -51,34 +53,36 @@ class LocationsMap extends React.Component {
             height: '365px',
 
         };
-        const {initialMapCenter, markerLng, markerLat} = this.state;
+        const {markerLng, markerLat} = this.state;
 
         return (
             <Map google={google}
                  zoom={11}
                  // containerStyle={{position: 'absolute', width: '40%', height:'auto'}}
                  style={style}
-                 center={ initialMapCenter }
-                 initialCenter={ initialMapCenter }
+                 center={ this.props.map.initialMapCenter }
+                 initialCenter={ this.props.map.initialMapCenter }
                  clickableIcons={false}
                  onClick={this.handleMapClick}>
 
                 {/*<Marker position={ {lat: 31.778561, lng: 34.635831} }/>*/}
-                <Marker position={ (markerLng && markerLat) ? {lat: markerLat, lng: markerLng} : null}/>
+                <Marker position={ (this.props.map.markerLng && this.props.map.markerLat) ? {lat: this.props.map.markerLat, lng: this.props.map.markerLng} : null}/>
 
             </Map>
         );
 
     }
 }
-//
-// const mapStateToProps = (state) => ({
-//     coordinates: state.toJS().locations.coordinates
-// });
+
+const mapStateToProps = (state) => ({
+    map: state.map
+});
+
 
 
 export default GoogleApiWrapper({
     apiKey: ('AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ')
 })(
-    connect(null, { changeMapLocation })(LocationsMap)
+    connect(mapStateToProps, { changeMapLocation })(LocationsMap)
 )
+

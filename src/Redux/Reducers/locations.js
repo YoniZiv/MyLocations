@@ -41,32 +41,10 @@ export const locations = (state = initialState, action) => {
                 }
             ))]
             const newState = {locations: newArr3}
-            debugger
             return newState;
-            // const newArr2 = action.payload.location.cats.map((option) => {
-            //     state.Locations.map((loca) => option.value === loca.catName ? {
-            //         catName: loca.catName,
-            //         locations: [...loca, {
-            //             name: action.payload.location.name,
-            //             address: action.payload.location.address,
-            //             lat: action.payload.location.lat,
-            //             long: action.payload.location.long
-            //         }]
-            //     } : loca)
-            //     // state.Locations.map((loca) => option.value === loca.catName ? ({
-            //     //     catName: loca.catName,
-            //     //     locations: [{
-            //     //         name: action.payload.location.name,
-            //     //         address: action.payload.location.address,
-            //     //         lat: action.payload.location.lat,
-            //     //         long: action.payload.location.long
-            //     //     }]
-            //     // }) : loca);
-            // })
-            // debugger
-            //
-            // const newState2 = {Locations: newArr2};
-            // return newState2;
+        }
+        case actionTypes.EDIT_LOCATION:{
+            console.log('works edit', action.payload.name, action.payload.address);
         }
         default: {
             return state

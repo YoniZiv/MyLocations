@@ -14,6 +14,8 @@ import {connect} from "react-redux";
 import Location from "../Location/location";
 import {addNewLocation} from "../../Redux/Actions/categoriesActions";
 import * as _ from "lodash";
+import {msgSaveLocation} from "../../Redux/Constants/growlMessages"
+import {Growl} from "primereact/components/growl/Growl";
 
 class Locations extends React.Component {
 
@@ -56,7 +58,8 @@ class Locations extends React.Component {
     saveLocation = () => {
         this.setState({
             name: this.state.tempName,
-            address: this.state.tempAddress
+            address: this.state.tempAddress,
+            messages: [ msgSaveLocation ]
         })
         this.props.addNewLocation({
             cats: this.state.value,
@@ -72,6 +75,7 @@ class Locations extends React.Component {
         let i = 0;
         return (
             <section id="locations">
+                <Growl value={this.state.messages}></Growl>
                 <Grid>
                     <Row>
                         <Col xs={6} md={8}>

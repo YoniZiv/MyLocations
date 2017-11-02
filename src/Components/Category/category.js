@@ -4,7 +4,8 @@ import {
     Well
 } from "react-bootstrap";
 import {connect} from "react-redux";
-import {addNewCategory, editCategory} from "../../Redux/Actions/categoriesActions";
+import {addNewCategory, deleteCategory, editCategory} from "../../Redux/Actions/categoriesActions";
+import {validateFields} from "../../common/validator";
 
 
 class Category extends React.Component {
@@ -12,20 +13,27 @@ class Category extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            editMode: this.props.name? false : true,
+            editMode: this.props.name ? false : true,
             categoryName: this.props.name || '',
-            tempText: this.props.name || ''
+            tempText: this.props.name || '',
+
+            catNameValid: true
         }
     }
 
     saveCategory = (props) => {
-        this.setState({
-            categoryName: this.state.tempText,
-            editMode: false
-        })
-        // this.props.addNewCategory(this.state.tempText);
-        this.props.editCategory(this.state.categoryName, this.state.tempText);
 
+        const invalidFields = validateFields({catName: this.state.tempText}, 'category');
+        if (invalidFields.length > 0) {
+            this.setState({catNameValid: false})
+        } else {
+            this.setState({
+                categoryName: this.state.tempText,
+                editMode: false,
+                catNameValid: true
+            })
+            this.props.editCategory(this.state.categoryName, this.state.tempText);
+        }
     }
 
     EditCard = () => {
@@ -35,7 +43,7 @@ class Category extends React.Component {
     }
 
     DeleteCategory = (categoryName) => {
-             this.props.deleteFunc(categoryName);
+        this.props.deleteCategory(categoryName);
     }
 
     ChangeText = (event) => {
@@ -48,23 +56,24 @@ class Category extends React.Component {
 
         return (
             <section id="EditCategory">
-                        <Col xs={4} md={4}>
-                            <Thumbnail >
-                                <h3>New Category</h3>
-                                <form>
-                                    <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <ControlLabel>Input with success</ControlLabel>
-                                        <FormControl type="text" placeholder="Category Name"
-                                                     inputRef={input => this.catName = input}
-                                                     value={ this.state.tempText } onChange={ this.ChangeText }/>
-                                        <HelpBlock>Help text with validation state.</HelpBlock>
-                                        <Button bsStyle="primary"
-                                                onClick={ this.saveCategory.bind(this) }>Apply</Button>&nbsp;
-                                        <Button bsStyle="danger">Cancel</Button>
-                                    </FormGroup>
-                                </form>
-                            </Thumbnail>
-                        </Col>
+                <Col xs={4} md={4}>
+                    <Thumbnail>
+                        <h3>New Category</h3>
+                        <form>
+                            <FormGroup controlId="formValidationSuccess1"
+                                       validationState={this.state.catNameValid ? null : 'error'}>
+                                <ControlLabel>Choose a name for your category</ControlLabel>
+                                <FormControl type="text" placeholder="Category Name"
+                                             inputRef={input => this.catName = input}
+                                             value={this.state.tempText} onChange={this.ChangeText}/>
+                                <HelpBlock>This field is mandatory.</HelpBlock>
+                                <Button bsStyle="primary"
+                                        onClick={this.saveCategory.bind(this)}>Apply</Button>&nbsp;
+                                <Button bsStyle="danger">Cancel</Button>
+                            </FormGroup>
+                        </form>
+                    </Thumbnail>
+                </Col>
             </section>
         );
     }
@@ -75,9 +84,10 @@ class Category extends React.Component {
 
                 <Col xs={4} md={4}>
                     <Thumbnail>
-                        <Well><h3>{ this.state.categoryName }</h3></Well>
-                        <Button bsStyle="primary" onClick={ this.EditCard.bind(this) }>Edit</Button>&nbsp;
-                        <Button bsStyle="danger" onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
+                        <Well><h3>{this.state.categoryName}</h3></Well>
+                        <Button bsStyle="primary" onClick={this.EditCard.bind(this)}>Edit</Button>&nbsp;
+                        <Button bsStyle="danger"
+                                onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
                     </Thumbnail>
                 </Col>
             </section>
@@ -88,13 +98,12 @@ class Category extends React.Component {
     render() {
         return (
             <section id="category">
-                        { this.state.editMode ? this._editCategory() : this._finishedCategory() }
+                {this.state.editMode ? this._editCategory() : this._finishedCategory()}
             </section>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-});
+const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, { addNewCategory, editCategory })(Category)
+export default connect(mapStateToProps, {addNewCategory, editCategory, deleteCategory})(Category)
