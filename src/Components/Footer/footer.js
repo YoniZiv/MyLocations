@@ -4,8 +4,9 @@ import {Nav, NavItem} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 const FooterTabStyle = styled.div`
-    margin-left: calc(59vw - 194px);
-    margin-top: 3vh;
+       width: 200px;
+    margin-left: calc(50vw - 100px);
+    margin-top : 10px
     `
 
 export class Footer extends Component {
@@ -16,8 +17,6 @@ export class Footer extends Component {
         this.state = {
             activeKey: 1
         }
-
-
     }
 
     styleObj = {
@@ -31,13 +30,20 @@ export class Footer extends Component {
 
     }
 
+    nav1Clicked = ()=>{
+     // debugger;
+     // this.props.history.push('/'); <<<<
+      this.setState({activeKey:1});
+    }
+
+
     render() {
         return (
             <section id="app-footer">
                 <div style={ this.styleObj }>
                     <FooterTabStyle>
                         <Nav bsStyle="pills" activeKey={this.state.activeKey}>
-                            <NavItem eventKey={1} onClick={() => this.setState({activeKey:1})}><Link to="/" style={{ textDecoration: 'none'}} >Categories</Link></NavItem>
+                            <NavItem eventKey={1} onClick={this.nav1Clicked}><Link to="/" style={{ textDecoration: 'none'}} >Categories</Link></NavItem>
                             <NavItem eventKey={2} onClick={() => this.setState({activeKey:2})}><Link to="/profile" style={{ textDecoration: 'none'}}>Locations</Link></NavItem>
                         </Nav>
                     </FooterTabStyle>

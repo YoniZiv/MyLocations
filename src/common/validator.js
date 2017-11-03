@@ -8,6 +8,13 @@ export const validateFields = (fieldsContent, entityType) => {
             break;
         }
         case 'location': {
+
+
+            /*
+         invalidsArray = Object.keys(fieldsContent).filter(key=>{
+            return _.isEmpty(fieldsContent[key])
+         });*/
+
             _.isEmpty(fieldsContent.locName) ? invalidsArray.push('locName') : null;
             _.isEmpty(fieldsContent.address) ? invalidsArray.push('address') : null;
             _.isEmpty(fieldsContent.catNames) ? invalidsArray.push('catNames') : null;

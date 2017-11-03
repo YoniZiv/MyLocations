@@ -53,11 +53,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <AppNav />
-        <Main />
-        <Footer />
-      </div>
+        <div className="App">
+          <AppNav />
+          <Main />
+          <Footer />
+        </div>
     );
   }
 }

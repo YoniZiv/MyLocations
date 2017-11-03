@@ -31,7 +31,8 @@ class Locations extends React.Component {
 
             tempName: '',
             tempAddress: '',
-            catList: Object.keys(props.places)
+            catList: Object.keys(props.places),
+            invalidFields  : ['key1', 'key2']
 
         }
     }

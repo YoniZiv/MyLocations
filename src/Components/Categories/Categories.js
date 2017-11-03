@@ -39,13 +39,13 @@ class Categories extends React.Component {
 
     render() {
         return (
-            <section id="Categories">
+            <section className="categories">
                 <Button onClick={ this.NewCategory}> Add </Button>
                 <Grid>
                     <Row>
-                        { this.props.categories.map( (cat) => {
+                        { this.props.categories.map( (categoryName) => {
                             return (
-                                <Category name={ cat } />
+                              <Category key={"category_" + categoryName} name={ categoryName }/>
                             );
                         })}
                     </Row>
