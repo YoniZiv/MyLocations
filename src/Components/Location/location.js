@@ -34,16 +34,22 @@ class Location extends React.Component {
     }
 
 
-    getPicture = () => {
-        const urlPhotoData = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.props.lat + ',' + this.props.long + '&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-        axios.get(urlPhotoData).then((res) => {
-            const photoRef = res.data.results[0].photos[0].photo_reference;
-            const urlPhoto = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=180&photoreference=' + photoRef + '&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-            console.log(urlPhoto)
-            axios.get(urlPhoto).then((res) => this.setState({photoUrl: res.config.url})).catch((err2) => console.log("ERRRRRRR", err2));
-        }).catch((err) => console.log("ERRor", err))
+  getPicture = () => {
 
-    }
+    const localProxyUrl = 'http://localhost:8000';
+
+    const urlPhotoData = localProxyUrl + '/maps/api/place/nearbysearch/json?location=' + this.props.lat + ',' + this.props.long + '&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
+    axios.get(urlPhotoData).then((res) => {
+      const photoRef = res.data.results[0].photos[0].photo_reference;
+      const urlPhoto = localProxyUrl + '/maps/api/place/photo?maxwidth=400&maxheight=180&photoreference=' + photoRef + '&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
+      console.log(urlPhoto);
+
+      axios.get(urlPhoto).then((res) => {
+        this.setState({photoUrl: res.config.url.replace(localProxyUrl, "https://maps.googleapis.com")})
+      }).catch((err2) => console.log("ERRRRRRR", err2));
+    }).catch((err) => console.log("ERRor", err))
+
+  }
 
 
     saveLocation = (props) => {
