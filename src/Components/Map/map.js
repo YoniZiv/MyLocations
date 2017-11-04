@@ -81,7 +81,7 @@ const mapStateToProps = (state) => ({
 
 
 export default GoogleApiWrapper({
-    apiKey: ('AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ')
+    apiKey: ('AIzaSyDtV9TcN_rFgXJsxTqnBGepFB8h4UcJJl0')
 })(
     connect(mapStateToProps, { changeMapLocation })(LocationsMap)
 )

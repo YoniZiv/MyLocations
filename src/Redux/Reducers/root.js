@@ -6,7 +6,7 @@ import {map} from "./map";
 const rootReducer = combineReducers({
     categories,
     locations,
-    map
+    map,
 })
 
 export default rootReducer

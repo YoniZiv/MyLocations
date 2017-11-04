@@ -9,9 +9,6 @@ export const categories = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_NEW_CATEGORY: {
             const newArr ={categories: [...state.categories, action.payload.category ]} ;
-            debugger
-            // const newState = {...state, CategoriesNames: newArr};
-            // const newState = {Locations: newArr}
             return newArr;
         }
         case actionTypes.EDIT_CATEGORY: {
@@ -23,7 +20,6 @@ export const categories = (state = initialState, action) => {
         case actionTypes.DELETE_CATEGORY: {
             let cats = state.categories.map((cat) => cat);
             _.remove(cats, (catName) => catName === action.payload.name);
-            debugger
             return {categories: cats};
         }
 

@@ -6,16 +6,15 @@ import { Link } from "react-router-dom";
 const FooterTabStyle = styled.div`
        width: 200px;
     margin-left: calc(50vw - 100px);
-    margin-top : 10px
+    margin-top : 10px,
     `
 
 export class Footer extends Component {
-
     constructor(props){
         super(props)
-
         this.state = {
-            activeKey: 1
+            activeKey: 1,
+
         }
     }
 
@@ -26,14 +25,27 @@ export class Footer extends Component {
         border: "solid transparent",
         opacity: 0.9,
         color: "rgba(0, 0, 0, 0.68)",
-        boxShadow: "10px 10px 55px #888888"
+        boxShadow: "10px 10px 55px #888888",
+
 
     }
 
-    nav1Clicked = ()=>{
+    switchPage = (path)=>{
      // debugger;
      // this.props.history.push('/'); <<<<
-      this.setState({activeKey:1});
+        switch (path){
+            case '/':
+                this.setState({activeKey:1});
+                break;
+            case '/profile':
+                this.setState({activeKey:2});
+                break;
+        }
+      this.routerObj.context.router.history.push(path)
+    }
+
+    componentDidMount() {
+        this.routerObj.context.router.history.location.pathname === '/' ? null : this.setState({activeKey: 2})
     }
 
 
@@ -43,8 +55,8 @@ export class Footer extends Component {
                 <div style={ this.styleObj }>
                     <FooterTabStyle>
                         <Nav bsStyle="pills" activeKey={this.state.activeKey}>
-                            <NavItem eventKey={1} onClick={this.nav1Clicked}><Link to="/" style={{ textDecoration: 'none'}} >Categories</Link></NavItem>
-                            <NavItem eventKey={2} onClick={() => this.setState({activeKey:2})}><Link to="/profile" style={{ textDecoration: 'none'}}>Locations</Link></NavItem>
+                            <NavItem eventKey={1} onClick={() => this.switchPage('/')}><Link to="/" ref={(input) => this.routerObj = input} onClick={ (e) => e.preventDefault() } > <i className="fa fa-list" aria-hidden="true"></i><br/> Categories</Link></NavItem>
+                            <NavItem eventKey={2} onClick={() => this.switchPage('/profile')}><Link to="/profile" onClick={ (e) => e.preventDefault() } ><i className="fa fa-map-marker" aria-hidden="true"></i><br/>Locations</Link></NavItem>
                         </Nav>
                     </FooterTabStyle>
                 </div>

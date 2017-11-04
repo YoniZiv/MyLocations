@@ -1,11 +1,11 @@
 const headerTexts = {
   Home: {
-    title: "Welcome to Kalbasa!",
-    subTitle: "The perfect website for Slavs"
+    title: "Welcome to My Locations!",
+    subTitle: "Here you can create your very own Categories!"
   },
   Profile: {
-    title: "Store",
-    subTitle: "Buy your very own Squatting Slav!"
+    title: "Locations",
+    subTitle: "Choose any location and match it to your Category"
   },
   Login: {
     title: "Login",

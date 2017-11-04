@@ -10,14 +10,13 @@ export const validateFields = (fieldsContent, entityType) => {
         case 'location': {
 
 
-            /*
          invalidsArray = Object.keys(fieldsContent).filter(key=>{
             return _.isEmpty(fieldsContent[key])
-         });*/
+         });
 
-            _.isEmpty(fieldsContent.locName) ? invalidsArray.push('locName') : null;
-            _.isEmpty(fieldsContent.address) ? invalidsArray.push('address') : null;
-            _.isEmpty(fieldsContent.catNames) ? invalidsArray.push('catNames') : null;
+            // _.isEmpty(fieldsContent.locName) ? invalidsArray.push('locName') : null;
+            // _.isEmpty(fieldsContent.address) ? invalidsArray.push('address') : null;
+            // _.isEmpty(fieldsContent.catNames) ? invalidsArray.push('catNames') : null;
             break;
         }
     }

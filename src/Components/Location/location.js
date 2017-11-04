@@ -6,13 +6,12 @@ import {
     Well
 } from "react-bootstrap";
 import {connect} from "react-redux";
-import {editLocation} from "../../Redux/Actions/categoriesActions";
+import {deleteLocation, editLocation} from "../../Redux/Actions/categoriesActions";
 import {Growl} from "primereact/components/growl/Growl";
-import {msgSaveLocation, msgCance} from "../../Redux/Constants/growlMessages"
+import {msgSaveLocation, msgCance, msgDeleteLocation} from "../../Redux/Constants/growlMessages"
 import {changeMapLocation} from "../../Redux/Actions/mapActions";
 import styled from 'styled-components';
 import {validateFields} from "../../common/validator";
-
 
 
 class Location extends React.Component {
@@ -29,57 +28,76 @@ class Location extends React.Component {
             long: this.props.long || '',
 
             tempLocationName: this.props.name || '',
-            tempAddress: this.props.address || ''
+            tempAddress: this.props.address || '',
+
+            invalidFields: [],
+            validLocationName: true,
+            validAddress: true,
         }
     }
 
 
-  getPicture = () => {
+    getPicture = () => {
 
-    const localProxyUrl = 'http://localhost:8000';
+        const localProxyUrl = 'http://localhost:8000';
 
-    const urlPhotoData = localProxyUrl + '/maps/api/place/nearbysearch/json?location=' + this.props.lat + ',' + this.props.long + '&radius=500&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-    axios.get(urlPhotoData).then((res) => {
-      const photoRef = res.data.results[0].photos[0].photo_reference;
-      const urlPhoto = localProxyUrl + '/maps/api/place/photo?maxwidth=400&maxheight=180&photoreference=' + photoRef + '&key=AIzaSyAqIGHdKR6_yfOzkkZKtVJk9VRMyvH45fQ';
-      console.log(urlPhoto);
+        const urlPhotoData = localProxyUrl + '/maps/api/place/nearbysearch/json?location=' + this.props.lat + ',' + this.props.long + '&radius=500&key=AIzaSyDtV9TcN_rFgXJsxTqnBGepFB8h4UcJJl0';
+        axios.get(urlPhotoData).then((res) => {
+            const photoRef = res.data.results[0].photos[0].photo_reference;
+            const urlPhoto = localProxyUrl + '/maps/api/place/photo?maxwidth=400&maxheight=180&photoreference=' + photoRef + '&key=AIzaSyDtV9TcN_rFgXJsxTqnBGepFB8h4UcJJl0';
+            console.log(urlPhoto);
 
-      axios.get(urlPhoto).then((res) => {
-        this.setState({photoUrl: res.config.url.replace(localProxyUrl, "https://maps.googleapis.com")})
-      }).catch((err2) => console.log("ERRRRRRR", err2));
-    }).catch((err) => console.log("ERRor", err))
+            axios.get(urlPhoto).then((res) => {
+                this.setState({photoUrl: res.config.url.replace(localProxyUrl, "https://maps.googleapis.com")})
+            }).catch((err2) => console.log("ERRRRRRR", err2));
+        }).catch((err) => console.log("ERRor", err))
 
-  }
+    }
 
 
     saveLocation = (props) => {
+        debugger;
+        const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress},'location')
+        if(invalidFields.length === 0)
+        {
 
-        const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress, catNames: 'mock' }, 'location');
-        if (invalidFields.length > 0) {
 
-            this.setState({catNameValid: false})
+
+            this.setState({
+                locationName: this.state.tempLocationName,
+                address: this.state.tempAddress,
+                editMode: false,
+            })
+            // this.props.addNewCategory(this.state.tempText);
+            this.props.editLocation(this.state.tempLocationName, this.state.tempAddress);
+            this.props.showGrowl(msgSaveLocation)
+
+        } else{
+            this.setState({
+                invalidFields: invalidFields
+            })
         }
 
-        this.setState({
-            locationName: this.state.tempLocationName,
-            address: this.state.tempAddress,
-            editMode: false,
-            messages:[ msgSaveLocation ]
-        })
-        // this.props.addNewCategory(this.state.tempText);
-        this.props.editLocation(this.state.tempLocationName, this.state.tempAddress);
+        // const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress, catNames: 'mock' }, 'location');
+        // if (invalidFields.length > 0) {
+        //
+        //     this.setState({catNameValid: false})
+        // }
+
+
 
     }
 
     EditCard = () => {
+        this.props.showGrowl(null)
         this.setState({
             editMode: true,
-            messages: []
         });
     }
 
-    DeleteCategory = (categoryName) => {
-        this.props.deleteFunc(categoryName);
+    deleteCategory = () => {
+        this.props.deleteLocation( this.props.catName, this.state.tempLocationName);
+        this.props.showGrowl(msgDeleteLocation);
     }
 
     ChangeText = (e, type) => {
@@ -96,44 +114,50 @@ class Location extends React.Component {
     }
 
     cancelEdit = () => {
+        this.props.showGrowl(msgCance);
         this.setState({
             editMode: false,
-            messages: [ msgCance ]
         })
     }
+
+    setNewMarker = () => {
+        this.props.showGrowl();
+        this.props.changeMapLocation(this.state.lat, this.state.long);
+    }
+
     _editLocation() {
 
         return (
             <section id="editLocation">
                 <Col xs={4} md={4}>
-                    <Thumbnail >
+                    <Thumbnail>
                         <h3>Edit Location</h3>
                         <form>
-                            <FormGroup controlId="formValidationSuccess1" validationState={null}>
+                            <FormGroup controlId="formValidationSuccess1" validationState={this.state.invalidFields.indexOf('locName') === -1 ? null : 'error' }>
                                 <FormControl type="text"
                                              placeholder="Location Name"
-                                             value={ this.state.tempLocationName }
+                                             value={this.state.tempLocationName}
                                              onChange={(e) => this.ChangeText(e, 'name')}/>
                             </FormGroup>
-                            <FormGroup controlId="formValidationSuccess1" validationState={null}>
+                            <FormGroup controlId="formValidationSuccess1" validationState={this.state.invalidFields.indexOf('address') === -1 ? null : 'error' }>
                                 <FormControl type="text"
                                              placeholder="Address"
-                                             value={ this.state.tempAddress }
+                                             value={this.state.tempAddress}
                                              onChange={(e) => this.ChangeText(e, 'address')}/>
                             </FormGroup>
                             <FormGroup controlId="formValidationSuccess1" validationState={null}>
                                 <FormControl type="text"
                                              disabled
-                                             value={ this.state.lat }/>
+                                             value={this.state.lat}/>
                             </FormGroup>
                             <FormGroup controlId="formValidationSuccess1" validationState={null}>
                                 <FormControl type="text"
                                              disabled
-                                             value={ this.state.long }/>
+                                             value={this.state.long}/>
                                 <HelpBlock>Help text with validation state.</HelpBlock>
                                 <Button bsStyle="primary"
-                                        onClick={ this.saveLocation }>Apply</Button>&nbsp;
-                                <Button bsStyle="danger" onClick={ this.cancelEdit }>Cancel</Button>
+                                        onClick={this.saveLocation}>Apply</Button>&nbsp;
+                                <Button bsStyle="danger" onClick={this.cancelEdit}>Cancel</Button>
                             </FormGroup>
                         </form>
                     </Thumbnail>
@@ -148,18 +172,18 @@ class Location extends React.Component {
             <section id="finishedLocation">
                 <Col xs={4} md={4}>
                     <Thumbnail
-                        src={ this.state.photoUrl || 'https://tse3.mm.bing.net/th?id=OIP.90fnjLCc27dgkfXc4sEDZAEsEs&w=190&h=190&c=8&qlt=90&o=4&pid=1.7'}>
+                        src={this.state.photoUrl || 'https://tse3.mm.bing.net/th?id=OIP.90fnjLCc27dgkfXc4sEDZAEsEs&w=190&h=190&c=8&qlt=90&o=4&pid=1.7'}>
                         <Button bsStyle="success"
                                 style={{borderRadius: '50%', outline: 'none'}}
-                                onClick={ () => this.props.changeMapLocation(this.state.lat, this.state.long) } >
+                                onClick={() => this.setNewMarker()}>
                             <i className="round fa fa-map-marker " aria-hidden="true"></i>
                         </Button>
-                        <h3>{ this.state.locationName } </h3>
-                        <h4>{ this.state.address }</h4>
+                        <h3>{this.state.locationName} </h3>
+                        <h4>{this.state.address}</h4>
                         <h5> {this.state.lat} X {this.state.long}</h5>
-                        <Button bsStyle="primary" onClick={ this.EditCard.bind(this) }>Edit</Button>&nbsp;
+                        <Button bsStyle="primary" onClick={this.EditCard.bind(this)}>Edit</Button>&nbsp;
                         <Button bsStyle="danger"
-                                onClick={() => this.DeleteCategory(this.state.categoryName)}>Delete</Button>
+                                onClick={() => this.deleteCategory()}>Delete</Button>
 
 
                     </Thumbnail>
@@ -172,8 +196,7 @@ class Location extends React.Component {
     render() {
         return (
             <section id="location">
-                <Growl value={this.state.messages}></Growl>
-                { this.state.editMode ? this._editLocation() : this._finishedLocation() }
+                {this.state.editMode ? this._editLocation() : this._finishedLocation()}
             </section>
         )
     }
@@ -181,5 +204,5 @@ class Location extends React.Component {
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, { editLocation, changeMapLocation })(Location)
+export default connect(mapStateToProps, {editLocation, changeMapLocation, deleteLocation})(Location)
 

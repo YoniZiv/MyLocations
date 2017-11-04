@@ -1,4 +1,6 @@
 import * as actionTypes from "../Constants/actionTypes";
+import {msgSaveLocation} from "../Constants/growlMessages";
+import * as _ from "lodash";
 
 const initialState = {
     locations: [
@@ -46,6 +48,21 @@ export const locations = (state = initialState, action) => {
         case actionTypes.EDIT_LOCATION:{
             console.log('works edit', action.payload.name, action.payload.address);
         }
+
+        case actionTypes.DELETE_ALL_FROM_CATEGORY: {
+            const newArr4 = state.locations.filter((location) => (
+                location.category !== action.payload.name
+            ))
+            return {locations: newArr4}
+        }
+
+        case actionTypes.DELETE_LOCATION:
+            let clonedArray = state.locations.map((loc) => loc)
+            // let locationsArr = clonedArray.filter((loc) => {  loc.name === action.payload.locName && loc.category === action.payload.catName})
+            _.remove(clonedArray, (loc) =>  loc.category === action.payload.catName && loc.name === action.payload.locName );
+            return {locations: clonedArray};
+
+
         default: {
             return state
         }

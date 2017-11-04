@@ -6,6 +6,8 @@ import {
 import {connect} from "react-redux";
 import {addNewCategory, deleteCategory, editCategory} from "../../Redux/Actions/categoriesActions";
 import {validateFields} from "../../common/validator";
+import {msgDeleteCategory, msgSaveCategory} from "../../Redux/Constants/growlMessages";
+import {Growl} from "primereact/components/growl/Growl";
 
 
 class Category extends React.Component {
@@ -21,8 +23,9 @@ class Category extends React.Component {
         }
     }
 
+
     saveCategory = () => {
-      const invalidFields = validateFields({catName: this.state.tempText}, 'category');
+        const invalidFields = validateFields({catName: this.state.tempText}, 'category');
         if (invalidFields.length > 0) {
             this.setState({catNameValid: false})
         } else {
@@ -32,6 +35,7 @@ class Category extends React.Component {
                 catNameValid: true
             });
             this.props.editCategory(this.state.categoryName, this.state.tempText);
+            this.props.showGrowl(msgSaveCategory);
         }
     }
 
@@ -39,25 +43,28 @@ class Category extends React.Component {
         this.setState({
             editMode: true
         });
+        this.props.showGrowl();
     }
 
     DeleteCategory = (categoryName) => {
         this.props.deleteCategory(categoryName);
+        this.props.showGrowl(msgDeleteCategory);
     }
 
     ChangeText = (event) => {
         this.setState({
-            tempText: event.target.value
+            tempText: event.target.value,
         })
+        this.props.showGrowl()
     }
 
-  handleKeyPress  =(target)=> {
-    if (target.charCode == 13) {
-      this.saveCategory();
+    handleKeyPress = (target) => {
+        if (target.charCode == 13) {
+            this.saveCategory();
+        }
     }
-  }
+
     _editCategory() {
-
         return (
             <section id="EditCategory">
                 <Col xs={4} md={4}>
@@ -71,8 +78,8 @@ class Category extends React.Component {
                                              onKeyPress={this.handleKeyPress}
                                              inputRef={input => {
                                                  this.catName = input;
-                                                 if(input)
-                                                    input.focus();
+                                                 if (input)
+                                                     input.focus();
                                              }}
                                              value={this.state.tempText} onChange={this.ChangeText}/>
                                 <HelpBlock>This field is mandatory.</HelpBlock>
@@ -106,8 +113,14 @@ class Category extends React.Component {
 
     render() {
         return (
-            <section className="category" key={this.props.name}>
-                {this.state.editMode ? this._editCategory() : this._finishedCategory()}
+
+            < section
+                className="category"
+                key={this.props.name
+                }>
+                {
+                    this.state.editMode ? this._editCategory() : this._finishedCategory()
+                }
             </section>
         )
     }

@@ -7,7 +7,7 @@ export const addNewCategory = (category) => ({
 
 export const editCategory = (oldName, newName) => ({
     type: actionTypes.EDIT_CATEGORY,
-    payload: {oldName,newName}
+    payload: {oldName, newName}
 });
 
 export const deleteCategory = (name) => ({
@@ -19,7 +19,17 @@ export const addNewLocation = (location) => ({
     payload: {location}
 })
 
-export const editLocation = (name,address) => ({
+export const editLocation = (name, address) => ({
     type: actionTypes.EDIT_LOCATION,
     payload: {name, address}
+})
+
+export const disposeCategory = (name) => ({
+    type: actionTypes.DELETE_ALL_FROM_CATEGORY,
+    payload: {name}
+})
+
+export const deleteLocation = (catName, locName) => ({
+    type: actionTypes.DELETE_LOCATION,
+    payload: {catName, locName}
 })

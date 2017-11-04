@@ -1,9 +1,16 @@
-import {createStore} from "redux";
+import {applyMiddleware, compose, createStore} from "redux";
 import rootReducer from "../Redux/Reducers/root"
+import middleware from "./Middleware/common";
 
- const store = createStore(
-    rootReducer
+const storeEnhancers = compose(
+    applyMiddleware(
+        middleware
+    )
+);
 
+const store = createStore(
+    rootReducer,
+    storeEnhancers
 )
 
 export default store

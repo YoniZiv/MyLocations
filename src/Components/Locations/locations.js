@@ -16,6 +16,7 @@ import {addNewLocation} from "../../Redux/Actions/categoriesActions";
 import * as _ from "lodash";
 import {msgSaveLocation} from "../../Redux/Constants/growlMessages"
 import {Growl} from "primereact/components/growl/Growl";
+import {showGrowl} from "../../common/growlMessage";
 
 class Locations extends React.Component {
 
@@ -25,14 +26,14 @@ class Locations extends React.Component {
             return ({value: cat, label: cat});
         })
         this.state = {
-             options: listOfCategories,
+            options: listOfCategories,
             name: '',
             address: '',
 
             tempName: '',
             tempAddress: '',
             catList: Object.keys(props.places),
-            invalidFields  : ['key1', 'key2']
+            invalidFields: ['key1', 'key2']
 
         }
     }
@@ -48,10 +49,10 @@ class Locations extends React.Component {
     ChangeText = (e, type) => {
         switch (type) {
             case 'name': {
-                this.setState({tempName: e.target.value})
+                this.setState({tempName: e.target.value, messages: []})
             }
             case 'address': {
-                this.setState({tempAddress: e.target.value})
+                this.setState({tempAddress: e.target.value, messages: []})
             }
         }
     }
@@ -60,8 +61,8 @@ class Locations extends React.Component {
         this.setState({
             name: this.state.tempName,
             address: this.state.tempAddress,
-            messages: [ msgSaveLocation ]
         })
+
         this.props.addNewLocation({
             cats: this.state.value,
             name: this.state.tempName,
@@ -69,10 +70,20 @@ class Locations extends React.Component {
             lat: this.props.map.markerLat,
             long: this.props.map.markerLng
         })
+        this.showGrowl(msgSaveLocation);
+    }
+
+    showGrowl = (growlMessage) => {
+        growlMessage ?
+            this.setState({
+                messages: [growlMessage]
+            }) :
+            this.setState({
+                messages: []
+            })
     }
 
     render() {
-        const keys = Object.keys(this.props.places)
         let i = 0;
         return (
             <section id="locations">
@@ -106,18 +117,17 @@ class Locations extends React.Component {
                                         />
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Latitude" value={this.props.map.markerLat} disabled/>
+                                        <FormControl type="text" placeholder="Latitude" value={this.props.map.markerLat}
+                                                     disabled/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Longitude" value={this.props.map.markerLng} disabled/>
+                                        <FormControl type="text" placeholder="Longitude"
+                                                     value={this.props.map.markerLng} disabled/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <Button bsStyle="primary" onClick={this.saveLocation}>Add</Button>
                                 </form>
-                                {/*<Button bsStyle="primary">Like</Button>&nbsp;*/}
-                                {/*<Button bsStyle="default">Buy</Button>*/}
-                                {/*</p>*/}
                             </Thumbnail>
                         </Col>
 
@@ -126,45 +136,24 @@ class Locations extends React.Component {
                         <Col xs={12} md={12}>
                             <PanelGroup>
 
-                                {_.map(this.props.places,(place,placeName) => {
+                                {_.map(this.props.places, (place, placeName) => {
                                     return (
-                                        <Panel collapsible header={placeName} eventKey={++i} >
+                                        <Panel collapsible header={placeName} eventKey={++i}>
                                             {place.map((location) => {
                                                 return (
                                                     <Location name={location.name}
                                                               address={location.address}
+                                                              showGrowl={this.showGrowl}
+                                                              key={"location_" + location.name}
+                                                              catName={placeName}
                                                               long={location.long}
                                                               lat={location.lat}/>
+
                                                 )
                                             })}
                                         </Panel>
                                     )
                                 })}
-                                {/*{ this.props.categories.map((name) => {*/}
-                                {/*return (*/}
-                                {/*name &&*/}
-                                {/*<Panel header={ name } eventKey="1">*/}
-                                {/*{this.props.locations.map((category) => {*/}
-                                {/*category.catName === name ?*/}
-                                {/*category.locations.map((location) => {*/}
-                                {/*console.log(location)*/}
-                                {/*return (*/}
-                                {/*<Location name={location.name}*/}
-                                {/*address={ location.address }*/}
-                                {/*long={ location.long }*/}
-                                {/*lat={ location.lat } />*/}
-                                {/*);*/}
-                                {/*}) : null})}*/}
-
-                                {/*/!*<img src={this.state.img}/>*!/*/}
-                                {/*/!*{this.props.locations.map((location) => {*!/*/}
-                                {/*/!*return (*!/*/}
-                                {/*/!*location.catName === name ? this.getPicture() : null*!/*/}
-                                {/*/!*);*!/*/}
-                                {/*/!*})}*!/*/}
-                                {/*</Panel>*/}
-                                {/*);*/}
-                                {/*})}*/}
                             </PanelGroup>
                         </Col>
                     </Row>
@@ -177,7 +166,7 @@ class Locations extends React.Component {
 const mapStateToProps = (state) => ({
     places: _.groupBy(state.locations.locations, (cat) => cat.category),
     cats: state.categories.categories,
-    map: state.map
+    map: state.map,
 });
 
 

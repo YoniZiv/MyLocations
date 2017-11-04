@@ -16,3 +16,7 @@ export const SET_ADD_MODE = 'SET_ADD_MODE';
 
 // Map
 export const CHANGE_MAP_LOCATION = 'CHANGE_MAP_LOCATION';
+
+// Growl
+
+export const SHOW_GROWL = 'SHOW_GROWL'

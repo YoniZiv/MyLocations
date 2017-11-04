@@ -5,6 +5,8 @@ import {remove} from 'lodash';
 import {connect} from "react-redux";
 import {addNewCategory} from "../../Redux/Actions/categoriesActions";
 import * as _ from "lodash";
+import {Growl} from "primereact/components/growl/Growl";
+import {showGrowl} from "../../common/growlMessage";
 
 class Categories extends React.Component {
 
@@ -13,6 +15,7 @@ class Categories extends React.Component {
         super(props);
         this.state = {
             // CategoriesList: Object.keys(props.places) || []
+
         }
     }
 
@@ -32,6 +35,15 @@ class Categories extends React.Component {
         // console.log('after' , CategoriesList);
     }
 
+    showGrowl = (growlMessage) => {
+        growlMessage ?
+            this.setState({
+                messages: [growlMessage]
+            }) :
+            this.setState({
+                messages: []
+            })
+    }
 
     NewCategory = () => {
        this.props.addNewCategory('');
@@ -40,12 +52,14 @@ class Categories extends React.Component {
     render() {
         return (
             <section className="categories">
-                <Button onClick={ this.NewCategory}> Add </Button>
+                <Growl value={this.state.messages}></Growl>
+
+                <Button onClick={ this.NewCategory} className="addBtn"> + </Button>
                 <Grid>
                     <Row>
                         { this.props.categories.map( (categoryName) => {
                             return (
-                              <Category key={"category_" + categoryName} name={ categoryName }/>
+                              <Category key={"category_" + categoryName} name={ categoryName } showGrowl={ this.showGrowl } />
                             );
                         })}
                     </Row>
