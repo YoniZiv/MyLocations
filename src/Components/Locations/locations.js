@@ -18,6 +18,7 @@ import {msgSaveLocation} from "../../Redux/Constants/growlMessages"
 import {Growl} from "primereact/components/growl/Growl";
 import {showGrowl} from "../../common/growlMessage";
 import {InputSwitch} from "primereact/components/inputswitch/InputSwitch";
+import {validateFields} from "../../common/validator";
 
 class Locations extends React.Component {
 
@@ -28,8 +29,6 @@ class Locations extends React.Component {
         })
         this.state = {
             options: listOfCategories,
-            name: '',
-            address: '',
 
             tempName: '',
             tempAddress: '',
@@ -37,7 +36,11 @@ class Locations extends React.Component {
             invalidFields: ['key1', 'key2'],
             messages: [],
 
-            checked1:true
+            checked1:true,
+
+            invalidFields: [],
+            validLocationName: true,
+            validAddress: true,
 
         }
     }
@@ -65,19 +68,26 @@ class Locations extends React.Component {
 
 
     saveLocation = () => {
-        this.setState({
-            name: this.state.tempName,
-            address: this.state.tempAddress,
-        })
+        const invalidFields = validateFields({locName: this.state.tempName, address: this.tempAddress,selections: this.state.value },'location')
+        if(invalidFields.length === 0) {
+            this.props.addNewLocation({
+                cats: this.state.value,
+                name: this.state.tempName,
+                address: this.state.tempAddress,
+                lat: this.props.map.markerLat,
+                long: this.props.map.markerLng
+            })
 
-        this.props.addNewLocation({
-            cats: this.state.value,
-            name: this.state.tempName,
-            address: this.state.tempAddress,
-            lat: this.props.map.markerLat,
-            long: this.props.map.markerLng
-        })
-        this.showGrowl(msgSaveLocation);
+            this.setState({
+                tempName: '',
+                tempAddress: ''
+            })
+            this.showGrowl(msgSaveLocation);
+        } else {
+            this.setState({
+                invalidFields: invalidFields
+            })
+        }
     }
 
     showGrowl = (growlMessage) => {
@@ -110,17 +120,17 @@ class Locations extends React.Component {
                             <Thumbnail>
                                 <h3>New Location</h3>
                                 <form>
-                                    <FormGroup controlId="formValidationSuccess1" validationState={null}>
+                                    <FormGroup controlId="formValidationSuccess1" validationState={this.state.invalidFields.indexOf('locName') === -1 ? null : 'error'}>
                                         <FormControl type="text" placeholder="Location Name" value={this.state.tempText}
                                                      onChange={(e) => this.ChangeText(e, 'name')}/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
-                                    <FormGroup controlId="formValidationSuccess1" validationState={null}>
+                                    <FormGroup controlId="formValidationSuccess1" validationState={this.state.invalidFields.indexOf('address') === -1 ? null : 'error'}>
                                         <FormControl type="text" placeholder="Address" value={this.state.tempText}
                                                      onChange={(e) => this.ChangeText(e, 'address')}/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
-                                    <FormGroup controlId="formControlsSelect">
+                                    <FormGroup controlId="formControlsSelect" validationState={this.state.invalidFields.indexOf('selections') === -1 ? null : 'error'}>
                                         <Select
                                             name="form-field-name"
                                             value={this.state.value}
