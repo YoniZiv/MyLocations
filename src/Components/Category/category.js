@@ -6,7 +6,7 @@ import {
 import {connect} from "react-redux";
 import {addNewCategory, deleteCategory, editCategory} from "../../Redux/Actions/categoriesActions";
 import {validateFields} from "../../common/validator";
-import {msgDeleteCategory, msgSaveCategory} from "../../Redux/Constants/growlMessages";
+import {msgCance, msgDeleteCategory, msgSaveCategory} from "../../Redux/Constants/growlMessages";
 import {Growl} from "primereact/components/growl/Growl";
 
 
@@ -64,6 +64,11 @@ class Category extends React.Component {
         }
     }
 
+    cancelEdit = () => {
+        this.state.categoryName === '' ? this.props.deleteCategory('') : this.setState({editMode: false});
+        this.props.showGrowl(msgCance);
+    }
+
     _editCategory() {
         return (
             <section id="EditCategory">
@@ -85,7 +90,7 @@ class Category extends React.Component {
                                 <HelpBlock>This field is mandatory.</HelpBlock>
                                 <Button bsStyle="primary"
                                         onClick={this.saveCategory.bind(this)}>Apply</Button>&nbsp;
-                                <Button bsStyle="danger">Cancel</Button>
+                                <Button bsStyle="danger" onClick={() => this.cancelEdit()}>Cancel</Button>
                             </FormGroup>
                         </form>
                     </Thumbnail>

@@ -17,6 +17,7 @@ import * as _ from "lodash";
 import {msgSaveLocation} from "../../Redux/Constants/growlMessages"
 import {Growl} from "primereact/components/growl/Growl";
 import {showGrowl} from "../../common/growlMessage";
+import {InputSwitch} from "primereact/components/inputswitch/InputSwitch";
 
 class Locations extends React.Component {
 
@@ -33,11 +34,13 @@ class Locations extends React.Component {
             tempName: '',
             tempAddress: '',
             catList: Object.keys(props.places),
-            invalidFields: ['key1', 'key2']
+            invalidFields: ['key1', 'key2'],
+            messages: [],
+
+            checked1:true
 
         }
     }
-
 
 
     logChange = (val) => {
@@ -49,13 +52,17 @@ class Locations extends React.Component {
     ChangeText = (e, type) => {
         switch (type) {
             case 'name': {
-                this.setState({tempName: e.target.value, messages: []})
+                this.setState({tempName: e.target.value,messages: []})
+                break;
             }
             case 'address': {
-                this.setState({tempAddress: e.target.value, messages: []})
+                this.setState({tempAddress: e.target.value,messages: []})
+                break;
             }
         }
     }
+
+
 
     saveLocation = () => {
         this.setState({
@@ -83,8 +90,14 @@ class Locations extends React.Component {
             })
     }
 
+    onChangeBasic() {
+        this.setState({checked1: !this.state.checked1});
+    }
+    componentWillUpdate() {
+      this.state.messages.length !== 0 ? this.setState({messages: []}) : null
+    }
+
     render() {
-        let i = 0;
         return (
             <section id="locations">
                 <Growl value={this.state.messages}></Growl>
@@ -117,15 +130,23 @@ class Locations extends React.Component {
                                         />
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Latitude" value={this.props.map.markerLat}
+                                        <FormControl type="text" placeholder="Latitude"
+                                                     value={this.props.map.markerLat}
+                                                     onChange={(e) => this.ChangeText(e, '')}
                                                      disabled/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
-                                        <FormControl type="text" placeholder="Longitude"
-                                                     value={this.props.map.markerLng} disabled/>
+                                        <FormControl type="text"
+                                                     placeholder="Longitude"
+                                                     onChange={(e) => this.ChangeText(e, '')}
+                                                     value={this.props.map.markerLng}
+                                                     disabled/>
                                         <HelpBlock></HelpBlock>
                                     </FormGroup>
+
+                                    <InputSwitch checked={this.state.checked1} onChange={() => this.onChangeBasic() } onLabel="Grouped" offLabel="Ungrouped"/>
+                                    <br/>
                                     <Button bsStyle="primary" onClick={this.saveLocation}>Add</Button>
                                 </form>
                             </Thumbnail>
@@ -134,41 +155,76 @@ class Locations extends React.Component {
                     </Row>
                     <Row>
                         <Col xs={12} md={12}>
-                            <PanelGroup>
+                            { this.state.checked1 ? this.GroupedLocations() : this.UngroupedLocations() }
 
-                                {_.map(this.props.places, (place, placeName) => {
-                                    return (
-                                        <Panel collapsible header={placeName} eventKey={++i}>
-                                            {place.map((location) => {
-                                                return (
-                                                    <Location name={location.name}
-                                                              address={location.address}
-                                                              showGrowl={this.showGrowl}
-                                                              key={"location_" + location.name}
-                                                              catName={placeName}
-                                                              long={location.long}
-                                                              lat={location.lat}/>
-
-                                                )
-                                            })}
-                                        </Panel>
-                                    )
-                                })}
-                            </PanelGroup>
                         </Col>
                     </Row>
                 </Grid>
             </section>
         )
     }
+
+    GroupedLocations() {
+        let i = 0;
+        return (
+            <PanelGroup>
+                {_.map(this.props.places, (place, placeName) => {
+                    const sortedLocations = _.sortBy(place, (loc) => loc.name.toUpperCase())
+                    return (
+                        <Grid>
+                            <Row>
+                                <Panel collapsible header={placeName} eventKey={++i}>
+                                    {sortedLocations.map((location) => {
+                                        return (
+                                            <Location name={location.name}
+                                                      address={location.address}
+                                                      showGrowl={this.showGrowl}
+                                                      key={"location_" + location.name}
+                                                      catName={placeName}
+                                                      long={location.long}
+                                                      lat={location.lat}/>
+
+                                        )
+                                    })}
+                                </Panel>
+                            </Row>
+                        </Grid>
+                    )
+                })}
+            </PanelGroup>
+        )
+    }
+
+    UngroupedLocations() {
+        const sortedList = _.sortBy(this.props.placesGrouped, (loc) => loc.name.toUpperCase())
+        return (
+            <Grid>
+                <Row>
+                    {
+                        sortedList.map((loc) => (
+                            <Location name={loc.name}
+                                      address={loc.address}
+                                      showGrowl={this.showGrowl}
+                                      key={"location_" + loc.name}
+                                      catName={loc.category}
+                                      long={loc.long}
+                                      lat={loc.lat}/>
+                            )
+                        )
+                    }
+                </Row>
+            </Grid>
+        )
+    }
+
 }
 
 const mapStateToProps = (state) => ({
-    places: _.groupBy(state.locations.locations, (cat) => cat.category),
+    places: _.groupBy(_.sortBy(state.locations.locations,(loc)=>loc.category),(loc)=>loc.category),
+    placesGrouped: state.locations.locations,
     cats: state.categories.categories,
     map: state.map,
 });
-
 
 export default connect(mapStateToProps, {addNewLocation})(Locations)
 

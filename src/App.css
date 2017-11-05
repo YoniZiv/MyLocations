@@ -66,3 +66,13 @@ ul {
     opacity: 0.9;
     background-color: #286091;
 }
+
+.thumbnail>img{
+    max-height: 150px
+}
+
+.thumbnail>h3,h5{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

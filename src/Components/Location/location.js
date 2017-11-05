@@ -56,21 +56,18 @@ class Location extends React.Component {
 
 
     saveLocation = (props) => {
-        debugger;
         const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress},'location')
         if(invalidFields.length === 0)
         {
-
-
-
+            this.props.editLocation(this.state.locationName,this.state.address, this.state.tempLocationName, this.state.tempAddress);
+            this.props.showGrowl(msgSaveLocation)
             this.setState({
                 locationName: this.state.tempLocationName,
                 address: this.state.tempAddress,
                 editMode: false,
             })
             // this.props.addNewCategory(this.state.tempText);
-            this.props.editLocation(this.state.tempLocationName, this.state.tempAddress);
-            this.props.showGrowl(msgSaveLocation)
+
 
         } else{
             this.setState({
@@ -172,7 +169,7 @@ class Location extends React.Component {
             <section id="finishedLocation">
                 <Col xs={4} md={4}>
                     <Thumbnail
-                        src={this.state.photoUrl || 'https://tse3.mm.bing.net/th?id=OIP.90fnjLCc27dgkfXc4sEDZAEsEs&w=190&h=190&c=8&qlt=90&o=4&pid=1.7'}>
+                        src={this.state.photoUrl || 'https://media.giphy.com/media/PphxM6dOTWuoo/giphy.gif'}>
                         <Button bsStyle="success"
                                 style={{borderRadius: '50%', outline: 'none'}}
                                 onClick={() => this.setNewMarker()}>

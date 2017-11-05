@@ -2,7 +2,7 @@ import * as actionTypes from "../Constants/actionTypes";
 import * as _ from "lodash";
 
 const initialState = {
-    categories: ['aaa','bbb']
+    categories: ['bbb','aaa','ddd']
 }
 
 export const categories = (state = initialState, action) => {

@@ -19,9 +19,9 @@ export const addNewLocation = (location) => ({
     payload: {location}
 })
 
-export const editLocation = (name, address) => ({
+export const editLocation = (oldName, oldAddress, newName, newAddress) => ({
     type: actionTypes.EDIT_LOCATION,
-    payload: {name, address}
+    payload: {oldName, oldAddress, newName, newAddress}
 })
 
 export const disposeCategory = (name) => ({
@@ -32,4 +32,9 @@ export const disposeCategory = (name) => ({
 export const deleteLocation = (catName, locName) => ({
     type: actionTypes.DELETE_LOCATION,
     payload: {catName, locName}
+})
+
+export const updateLocations = (oldName, newName) => ({
+    type: actionTypes.UPDATE_LOCATIONS,
+    payload: {oldName, newName}
 })

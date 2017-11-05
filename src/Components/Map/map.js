@@ -50,7 +50,7 @@ class LocationsMap extends React.Component {
         const { google  } = this.props;
         const style = {
             width: '100%',
-            height: '365px',
+            height: '391px',
 
         };
         const {markerLng, markerLat} = this.state;

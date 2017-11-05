@@ -1,5 +1,5 @@
 import * as actionTypes from "../Constants/actionTypes";
-import {disposeCategory} from "../Actions/categoriesActions";
+import {disposeCategory, updateLocations} from "../Actions/categoriesActions";
 
 const middleware = ({dispatch}) => next => action => {
     switch(action.type){
@@ -8,6 +8,9 @@ const middleware = ({dispatch}) => next => action => {
             dispatch(disposeCategory(action.payload.name))
         }
 
+        case actionTypes.EDIT_CATEGORY: {
+            dispatch(updateLocations(action.payload.oldName, action.payload.newName))
+        }
         default:
             break;
     }
