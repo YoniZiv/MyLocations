@@ -57,8 +57,9 @@ export class Footer extends Component {
                 <div style={ this.styleObj }>
                     <FooterTabStyle>
                         <Nav bsStyle="pills" activeKey={this.state.activeKey}>
-                            <NavItem eventKey={1} onClick={() => this.switchPage('/')}><Link to="/" ref={(input) => this.routerObj = input} onClick={ (e) => e.preventDefault() } > <i className="fa fa-list" /><br/> Categories</Link></NavItem>
-                            <NavItem eventKey={2} onClick={() => this.switchPage('/profile')}><Link to="/profile" onClick={ (e) => e.preventDefault() } ><i className="fa fa-map-marker" /><br/>Locations</Link></NavItem>
+                            <NavItem eventKey={1} onClick={() => this.switchPage('/')}><i className="fa fa-list" /><br/> Categories</NavItem>
+                            <NavItem eventKey={2} onClick={() => this.switchPage('/profile')}><i className="fa fa-map-marker" /><br/>Locations</NavItem>
+                        <Link to="/" ref={(input) => this.routerObj = input} onClick={ (e) => e.preventDefault() } style={{display: 'none'}}/>
                         </Nav>
                     </FooterTabStyle>
                 </div>
@@ -66,4 +67,5 @@ export class Footer extends Component {
         );
     }
 }
+
 

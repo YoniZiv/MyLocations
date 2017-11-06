@@ -1,13 +1,12 @@
 import React from 'react'
 import {
-    Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Row, Thumbnail,
+    Button, Col, ControlLabel, FormControl, FormGroup, HelpBlock, Thumbnail,
     Well
 } from "react-bootstrap";
 import {connect} from "react-redux";
 import {addNewCategory, deleteCategory, editCategory} from "../../Redux/Actions/categoriesActions";
 import {validateFields} from "../../common/validator";
-import {msgCance, msgDeleteCategory, msgSaveCategory} from "../../Redux/Constants/growlMessages";
-import {Growl} from "primereact/components/growl/Growl";
+import {msgCance, msgCatExist, msgDeleteCategory, msgSaveCategory} from "../../Redux/Constants/growlMessages";
 
 
 class Category extends React.Component {
@@ -25,17 +24,23 @@ class Category extends React.Component {
 
 
     saveCategory = () => {
-        const invalidFields = validateFields({catName: this.state.tempText}, 'category');
+        const invalidFields = validateFields({catName: this.state.tempText});
         if (invalidFields.length > 0) {
             this.setState({catNameValid: false})
         } else {
-            this.setState({
-                categoryName: this.state.tempText,
-                editMode: false,
-                catNameValid: true
-            });
-            this.props.editCategory(this.state.categoryName, this.state.tempText);
-            this.props.showGrowl(msgSaveCategory);
+            if(this.props.categories.indexOf(this.state.tempText) !== -1 && this.state.tempText !== '')
+            {
+                this.props.showGrowl(msgCatExist)
+            } else {
+                this.setState({
+                    categoryName: this.state.tempText,
+                    editMode: false,
+                    catNameValid: true
+                });
+                this.props.editCategory(this.state.categoryName, this.state.tempText);
+                this.props.showGrowl(msgSaveCategory);
+            }
+
         }
     }
 
@@ -59,7 +64,7 @@ class Category extends React.Component {
     }
 
     handleKeyPress = (target) => {
-        if (target.charCode == 13) {
+        if (target.charCode === 13) {
             this.saveCategory();
         }
     }
@@ -131,6 +136,8 @@ class Category extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+    categories: state.categories.categories
+});
 
 export default connect(mapStateToProps, {addNewCategory, editCategory, deleteCategory})(Category)

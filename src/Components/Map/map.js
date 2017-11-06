@@ -53,7 +53,6 @@ class LocationsMap extends React.Component {
             height: '391px',
 
         };
-        const {markerLng, markerLat} = this.state;
 
         return (
             <Map google={google}

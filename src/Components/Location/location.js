@@ -6,9 +6,10 @@ import {
 } from "react-bootstrap";
 import {connect} from "react-redux";
 import {deleteLocation, editLocation} from "../../Redux/Actions/categoriesActions";
-import {msgCance, msgDeleteLocation} from "../../Redux/Constants/growlMessages"
+import {msgCance, msgDeleteLocation, msgLocExist, msgSaveLocation} from "../../Redux/Constants/growlMessages"
 import {changeMapLocation} from "../../Redux/Actions/mapActions";
 import {validateFields} from "../../common/validator";
+import * as _ from "lodash";
 
 
 class Location extends React.Component {
@@ -52,10 +53,16 @@ class Location extends React.Component {
 
     saveLocation = () => {
         const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress},'location');
-        if(invalidFields.length === 0)
+        if(invalidFields.length > 0)
         {
-
-
+            this.setState({
+                invalidFields: invalidFields
+            })
+        } else {
+            console.log(this.props.locations)
+            if( _.find(this.props.locations, (loc) => loc.name === this.state.tempLocationName )){
+                this.props.showGrowl(msgLocExist)
+            } else {
             this.props.editLocation(this.state.locationName,this.state.address, this.state.tempLocationName, this.state.tempAddress);
             this.props.showGrowl(msgSaveLocation);
             this.setState({
@@ -63,23 +70,8 @@ class Location extends React.Component {
                 address: this.state.tempAddress,
                 editMode: false,
             })
-            // this.props.addNewCategory(this.state.tempText);
-
-
-        } else{
-            this.setState({
-                invalidFields: invalidFields
-            })
+            }
         }
-
-        // const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress, catNames: 'mock' }, 'location');
-        // if (invalidFields.length > 0) {
-        //
-        //     this.setState({catNameValid: false})
-        // }
-
-
-
     };
 
     EditCard = () => {
@@ -104,6 +96,9 @@ class Location extends React.Component {
                 this.setState({tempAddress: e.target.value});
                 break;
             }
+            default: {
+                break;
+            }
         }
     };
 
@@ -117,6 +112,11 @@ class Location extends React.Component {
     setNewMarker = () => {
         this.props.showGrowl();
         this.props.changeMapLocation(this.state.lat, this.state.long);
+
+        navigator.vibrate = navigator.vibrate || navigator.webktiVibrate || navigator.mozVibrate || navigator.msVibrate;
+        if (navigator.vibrate) {
+            navigator.vibrate(1000);
+        }
     };
 
     _editLocation() {
@@ -196,7 +196,9 @@ class Location extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+    locations: state.locations.locations
+});
 
 export default connect(mapStateToProps, {editLocation, changeMapLocation, deleteLocation})(Location)
 

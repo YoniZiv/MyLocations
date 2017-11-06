@@ -1,25 +1,17 @@
 import * as _ from "lodash";
 
-export const validateFields = (fieldsContent, entityType) => {
-    let invalidsArray = [];
-    switch (entityType) {
-        case 'category': {
-            _.isEmpty(fieldsContent.catName) ? invalidsArray.push('catName') : null;
-            break;
-        }
-        case 'location': {
-
-
-         invalidsArray = Object.keys(fieldsContent).filter(key=>{
-            return _.isEmpty(fieldsContent[key])
-         });
-
-            // _.isEmpty(fieldsContent.locName) ? invalidsArray.push('locName') : null;
-            // _.isEmpty(fieldsContent.address) ? invalidsArray.push('address') : null;
-            // _.isEmpty(fieldsContent.catNames) ? invalidsArray.push('catNames') : null;
-            break;
-        }
-    }
+export const validateFields = (fieldsContent) => {
+    // switch (entityType) {
+    //     case 'category': {
+    //         _.isEmpty(fieldsContent.catName) ? invalidsArray.push('catName') : null;
+    //         break;
+    //     }
+    //     case 'location': {
+    const invalidsArray = Object.keys(fieldsContent).filter(key => {
+        return _.isEmpty(fieldsContent[key])
+    });
+    //     break;
+    // }
     return invalidsArray;
 
 }

@@ -14,3 +14,4 @@ const headerTexts = {
 }
 
 export default headerTexts;
+

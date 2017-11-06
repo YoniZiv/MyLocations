@@ -3,7 +3,6 @@ import {Route, Switch} from "react-router-dom";
 
 import Profile from "../Profile/profile";
 import Home from "../Home/home";
-import Login from "../Auth/Login/login";
 
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/omega/theme.css';
@@ -29,7 +28,6 @@ export class Main extends Component {
                 <div style={ this.styleObj }>
                     <Switch>
                         <Route path="/profile" component={ Profile }/>
-                        <Route path="/login" component={ Login }/>
                         <Route path="/" component={ Home }/>
                     </Switch>
                 </div>

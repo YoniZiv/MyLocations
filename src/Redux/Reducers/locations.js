@@ -1,5 +1,4 @@
 import * as actionTypes from "../Constants/actionTypes";
-import {msgSaveLocation} from "../Constants/growlMessages";
 import * as _ from "lodash";
 
 const initialState = {

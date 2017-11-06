@@ -1,12 +1,9 @@
 import React from "react";
 import Category from "../Category/category";
 import {Button, Grid, Row} from "react-bootstrap";
-import {remove} from 'lodash';
 import {connect} from "react-redux";
 import {addNewCategory} from "../../Redux/Actions/categoriesActions";
-import * as _ from "lodash";
 import {Growl} from "primereact/components/growl/Growl";
-import {showGrowl} from "../../common/growlMessage";
 
 class Categories extends React.Component {
 
@@ -23,17 +20,7 @@ class Categories extends React.Component {
     //     this.props.addNewCategory('yoni')
     // }
 
-    DeleteCategory = (categoryName) => {
-        const { CategoriesList } = this.state;
-        console.log('before' , categoryName)
-        // remove(CategoriesList, (category) =>  )
-        // const removeIndex = CategoriesList.indexOf(e.target);
-        // const newList = CategoriesList.splice(removeIndex,1);
-        // this.setState({
-        //     CategoriesList: newList
-        // });
-        // console.log('after' , CategoriesList);
-    }
+
 
     showGrowl = (growlMessage) => {
         growlMessage ?

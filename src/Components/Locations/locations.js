@@ -11,9 +11,8 @@ import {connect} from "react-redux";
 import Location from "../Location/location";
 import {addNewLocation} from "../../Redux/Actions/categoriesActions";
 import * as _ from "lodash";
-import {msgSaveLocation} from "../../Redux/Constants/growlMessages"
+import {msgLocExist, msgSaveLocation} from "../../Redux/Constants/growlMessages"
 import {Growl} from "primereact/components/growl/Growl";
-import {showGrowl} from "../../common/growlMessage";
 import {InputSwitch} from "primereact/components/inputswitch/InputSwitch";
 import {validateFields} from "../../common/validator";
 
@@ -58,36 +57,47 @@ class Locations extends React.Component {
                 this.setState({tempAddress: e.target.value,messages: []});
                 break;
             }
+            default: {
+                break;
+            }
         }
     };
 
 
 
     saveLocation = () => {
-        const invalidFields = validateFields({locName: this.state.tempName, address: this.state.tempAddress,selections: this.state.value },'location');
-        if(invalidFields.length === 0) {
-            this.props.addNewLocation({
-                cats: this.state.value,
-                name: this.state.tempName,
-                address: this.state.tempAddress,
-                lat: this.props.map.markerLat,
-                long: this.props.map.markerLng
-            });
-
-            this.setState({
-                tempName: '',
-                tempAddress: '',
-                value: [],
-                invalidFields: []
-            });
-            this.showGrowl(msgSaveLocation);
-        } else {
+        const invalidFields = validateFields({
+            locName: this.state.tempName,
+            address: this.state.tempAddress,
+            selections: this.state.value
+        });
+        if (invalidFields.length > 0) {
             this.setState({
                 invalidFields: invalidFields
             })
-        }
-    };
+        } else {
+            if (_.find(this.props.placesGrouped, (loc) => loc.name === this.state.tempName || (loc.lat === this.props.map.markerLat && loc.long === this.props.map.markerLng))) {
+                this.showGrowl(msgLocExist);
+            } else {
+                this.props.addNewLocation({
+                    cats: this.state.value,
+                    name: this.state.tempName,
+                    address: this.state.tempAddress,
+                    lat: this.props.map.markerLat,
+                    long: this.props.map.markerLng
+                });
 
+                this.setState({
+                    tempName: '',
+                    tempAddress: '',
+                    value: [],
+                    invalidFields: []
+                });
+                this.showGrowl(msgSaveLocation);
+            }
+        }
+        ;
+    }
     showGrowl = (growlMessage) => {
         growlMessage ?
             this.setState({
@@ -109,6 +119,7 @@ class Locations extends React.Component {
         return (
             <section id="locations">
                 <Growl value={this.state.messages}/>
+                <Grid>
                     <Row>
                         <Col xs={6} md={8}>
                             <LocationsMap/>
@@ -163,6 +174,7 @@ class Locations extends React.Component {
 
                         </Col>
                     </Row>
+                </Grid>
             </section>
         )
     }

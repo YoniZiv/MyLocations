@@ -3,7 +3,6 @@ import headerText from "../../assets/header-text";
 import Header from "../Header/header";
 import AppContainer from "../../StyledComponents/app-container";
 import {Col, Grid, Row} from "react-bootstrap";
-import {Locations} from "../Locations/locations";
 import Categories from "../Categories/Categories";
 
 const Home = () => (
@@ -12,7 +11,7 @@ const Home = () => (
         <AppContainer>
             <Grid>
                 <Row>
-                    <Col xl={12} md={12} >
+                    <Col xs={12} md={12} >
                         <Categories/>
                     </Col>
                 </Row>

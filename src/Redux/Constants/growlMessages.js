@@ -5,3 +5,5 @@ export const msgSaveCategory = {severity:'success', summary:'Great Success!', de
 export const msgDeleteCategory = {severity:'success', summary:'Great Success!', detail:'Category successfully deleted'};
 
 export const msgCance = {severity:'info', summary:'Attention', detail:'You chose to discard. Changes will not be saved'};
+export const msgCatExist = {severity:'error', summary:'Woops!', detail:'It seems this category already exists! Please choose a different one'};
+export const msgLocExist = {severity:'error', summary:'Woops!', detail:'It seems this Location name or coordinates already exists! Please choose a different one'};
