@@ -1,14 +1,11 @@
 import React from 'react'
 import {
-    Accordion, Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Panel, PanelGroup, Row,
+    Button, Col, FormControl, FormGroup, Grid, Panel, PanelGroup, Row,
     Thumbnail
 } from "react-bootstrap";
 import LocationsMap from "../Map/map";
 import Select from 'react-select';
-import Category from "../Category/category";
-import axios from 'axios'
 
-// Be sure to include styles at some point, probably during your bootstrapping
 import 'react-select/dist/react-select.css';
 import {connect} from "react-redux";
 import Location from "../Location/location";
@@ -26,14 +23,13 @@ class Locations extends React.Component {
         super(props);
         const listOfCategories = _.map(props.cats, (cat) => {
             return ({value: cat, label: cat});
-        })
+        });
         this.state = {
             options: listOfCategories,
 
             tempName: '',
             tempAddress: '',
             catList: Object.keys(props.places),
-            invalidFields: ['key1', 'key2'],
             messages: [],
 
             checked1:true,
@@ -49,26 +45,26 @@ class Locations extends React.Component {
     logChange = (val) => {
         console.log('Selected: ', val);
         this.setState({value: val})
-    }
+    };
 
 
     ChangeText = (e, type) => {
         switch (type) {
             case 'name': {
-                this.setState({tempName: e.target.value,messages: []})
+                this.setState({tempName: e.target.value,messages: []});
                 break;
             }
             case 'address': {
-                this.setState({tempAddress: e.target.value,messages: []})
+                this.setState({tempAddress: e.target.value,messages: []});
                 break;
             }
         }
-    }
+    };
 
 
 
     saveLocation = () => {
-        const invalidFields = validateFields({locName: this.state.tempName, address: this.tempAddress,selections: this.state.value },'location')
+        const invalidFields = validateFields({locName: this.state.tempName, address: this.state.tempAddress,selections: this.state.value },'location');
         if(invalidFields.length === 0) {
             this.props.addNewLocation({
                 cats: this.state.value,
@@ -76,19 +72,21 @@ class Locations extends React.Component {
                 address: this.state.tempAddress,
                 lat: this.props.map.markerLat,
                 long: this.props.map.markerLng
-            })
+            });
 
             this.setState({
                 tempName: '',
-                tempAddress: ''
-            })
+                tempAddress: '',
+                value: [],
+                invalidFields: []
+            });
             this.showGrowl(msgSaveLocation);
         } else {
             this.setState({
                 invalidFields: invalidFields
             })
         }
-    }
+    };
 
     showGrowl = (growlMessage) => {
         growlMessage ?
@@ -98,7 +96,7 @@ class Locations extends React.Component {
             this.setState({
                 messages: []
             })
-    }
+    };
 
     onChangeBasic() {
         this.setState({checked1: !this.state.checked1});
@@ -110,8 +108,7 @@ class Locations extends React.Component {
     render() {
         return (
             <section id="locations">
-                <Growl value={this.state.messages}></Growl>
-                <Grid>
+                <Growl value={this.state.messages}/>
                     <Row>
                         <Col xs={6} md={8}>
                             <LocationsMap/>
@@ -121,14 +118,12 @@ class Locations extends React.Component {
                                 <h3>New Location</h3>
                                 <form>
                                     <FormGroup controlId="formValidationSuccess1" validationState={this.state.invalidFields.indexOf('locName') === -1 ? null : 'error'}>
-                                        <FormControl type="text" placeholder="Location Name" value={this.state.tempText}
+                                        <FormControl type="text" placeholder="Location Name" value={this.state.tempName}
                                                      onChange={(e) => this.ChangeText(e, 'name')}/>
-                                        <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={this.state.invalidFields.indexOf('address') === -1 ? null : 'error'}>
-                                        <FormControl type="text" placeholder="Address" value={this.state.tempText}
+                                        <FormControl type="text" placeholder="Address" value={this.state.tempAddress}
                                                      onChange={(e) => this.ChangeText(e, 'address')}/>
-                                        <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <FormGroup controlId="formControlsSelect" validationState={this.state.invalidFields.indexOf('selections') === -1 ? null : 'error'}>
                                         <Select
@@ -137,6 +132,7 @@ class Locations extends React.Component {
                                             options={this.state.options}
                                             multi
                                             onChange={this.logChange}
+                                            className={ this.state.invalidFields.indexOf('selections') === -1 ? null : 'invalidSelect'}
                                         />
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
@@ -144,7 +140,6 @@ class Locations extends React.Component {
                                                      value={this.props.map.markerLat}
                                                      onChange={(e) => this.ChangeText(e, '')}
                                                      disabled/>
-                                        <HelpBlock></HelpBlock>
                                     </FormGroup>
                                     <FormGroup controlId="formValidationSuccess1" validationState={null}>
                                         <FormControl type="text"
@@ -152,7 +147,6 @@ class Locations extends React.Component {
                                                      onChange={(e) => this.ChangeText(e, '')}
                                                      value={this.props.map.markerLng}
                                                      disabled/>
-                                        <HelpBlock></HelpBlock>
                                     </FormGroup>
 
                                     <InputSwitch checked={this.state.checked1} onChange={() => this.onChangeBasic() } onLabel="Grouped" offLabel="Ungrouped"/>
@@ -169,7 +163,6 @@ class Locations extends React.Component {
 
                         </Col>
                     </Row>
-                </Grid>
             </section>
         )
     }
@@ -179,7 +172,7 @@ class Locations extends React.Component {
         return (
             <PanelGroup>
                 {_.map(this.props.places, (place, placeName) => {
-                    const sortedLocations = _.sortBy(place, (loc) => loc.name.toUpperCase())
+                    const sortedLocations = _.sortBy(place, (loc) => loc.name.toUpperCase());
                     return (
                         <Grid>
                             <Row>
@@ -206,7 +199,7 @@ class Locations extends React.Component {
     }
 
     UngroupedLocations() {
-        const sortedList = _.sortBy(this.props.placesGrouped, (loc) => loc.name.toUpperCase())
+        const sortedList = _.sortBy(this.props.placesGrouped, (loc) => loc.name.toUpperCase());
         return (
             <Grid>
                 <Row>

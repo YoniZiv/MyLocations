@@ -76,3 +76,7 @@ ul {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.invalidSelect > .Select-control{
+    border-color: #a94442
+}

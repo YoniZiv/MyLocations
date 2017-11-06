@@ -7,11 +7,11 @@ const FooterTabStyle = styled.div`
        width: 200px;
     margin-left: calc(50vw - 100px);
     margin-top : 10px,
-    `
+    `;
 
 export class Footer extends Component {
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             activeKey: 1,
 
@@ -28,7 +28,7 @@ export class Footer extends Component {
         boxShadow: "10px 10px 55px #888888",
 
 
-    }
+    };
 
     switchPage = (path)=>{
      // debugger;
@@ -40,9 +40,11 @@ export class Footer extends Component {
             case '/profile':
                 this.setState({activeKey:2});
                 break;
+            default:
+                break;
         }
       this.routerObj.context.router.history.push(path)
-    }
+    };
 
     componentDidMount() {
         this.routerObj.context.router.history.location.pathname === '/' ? null : this.setState({activeKey: 2})
@@ -55,8 +57,8 @@ export class Footer extends Component {
                 <div style={ this.styleObj }>
                     <FooterTabStyle>
                         <Nav bsStyle="pills" activeKey={this.state.activeKey}>
-                            <NavItem eventKey={1} onClick={() => this.switchPage('/')}><Link to="/" ref={(input) => this.routerObj = input} onClick={ (e) => e.preventDefault() } > <i className="fa fa-list" aria-hidden="true"></i><br/> Categories</Link></NavItem>
-                            <NavItem eventKey={2} onClick={() => this.switchPage('/profile')}><Link to="/profile" onClick={ (e) => e.preventDefault() } ><i className="fa fa-map-marker" aria-hidden="true"></i><br/>Locations</Link></NavItem>
+                            <NavItem eventKey={1} onClick={() => this.switchPage('/')}><Link to="/" ref={(input) => this.routerObj = input} onClick={ (e) => e.preventDefault() } > <i className="fa fa-list" /><br/> Categories</Link></NavItem>
+                            <NavItem eventKey={2} onClick={() => this.switchPage('/profile')}><Link to="/profile" onClick={ (e) => e.preventDefault() } ><i className="fa fa-map-marker" /><br/>Locations</Link></NavItem>
                         </Nav>
                     </FooterTabStyle>
                 </div>

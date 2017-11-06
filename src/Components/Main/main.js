@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Route, Switch} from "react-router-dom";
-import {PageTransition} from "react-router-page-transition";
 
 import Profile from "../Profile/profile";
 import Home from "../Home/home";
@@ -22,7 +21,7 @@ export class Main extends Component {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundAttachment: "fixed"
-    }
+    };
 
     render() {
         return (

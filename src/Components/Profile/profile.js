@@ -1,8 +1,7 @@
-import React, { Component, PropTypes } from "react";
+import React from "react";
 import Header from "../Header/header";
 import AppContainer from "../../StyledComponents/app-container";
 import headerText from "../../assets/header-text";
-import Slavs from "../Slavs/slavs";
 import Locations from "../Locations/locations";
 
 const Profile = () => (
@@ -13,9 +12,6 @@ const Profile = () => (
         <Locations/>
       </AppContainer>
   </section>
-)
-
-const text = "Some header";
-const subText = "Some subText";
+);
 
 export default Profile;

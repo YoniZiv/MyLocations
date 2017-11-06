@@ -2,15 +2,12 @@ import React from 'react'
 import axios from 'axios'
 
 import {
-    Button, Col, ControlLabel, FormControl, FormGroup, Grid, HelpBlock, Row, Thumbnail,
-    Well
+    Button, Col, FormControl, FormGroup, HelpBlock, Thumbnail
 } from "react-bootstrap";
 import {connect} from "react-redux";
 import {deleteLocation, editLocation} from "../../Redux/Actions/categoriesActions";
-import {Growl} from "primereact/components/growl/Growl";
-import {msgSaveLocation, msgCance, msgDeleteLocation} from "../../Redux/Constants/growlMessages"
+import {msgCance, msgDeleteLocation} from "../../Redux/Constants/growlMessages"
 import {changeMapLocation} from "../../Redux/Actions/mapActions";
-import styled from 'styled-components';
 import {validateFields} from "../../common/validator";
 
 
@@ -20,7 +17,7 @@ class Location extends React.Component {
         this.state = {
 
             photoUrl: this.getPicture(),
-            editMode: this.props.name ? false : true,
+            editMode: !this.props.name,
 
             locationName: this.props.name || '',
             address: this.props.address,
@@ -45,22 +42,22 @@ class Location extends React.Component {
         axios.get(urlPhotoData).then((res) => {
             const photoRef = res.data.results[0].photos[0].photo_reference;
             const urlPhoto = localProxyUrl + '/maps/api/place/photo?maxwidth=400&maxheight=180&photoreference=' + photoRef + '&key=AIzaSyDtV9TcN_rFgXJsxTqnBGepFB8h4UcJJl0';
-            console.log(urlPhoto);
-
             axios.get(urlPhoto).then((res) => {
                 this.setState({photoUrl: res.config.url.replace(localProxyUrl, "https://maps.googleapis.com")})
             }).catch((err2) => console.log("ERRRRRRR", err2));
         }).catch((err) => console.log("ERRor", err))
 
-    }
+    };
 
 
-    saveLocation = (props) => {
-        const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress},'location')
+    saveLocation = () => {
+        const invalidFields = validateFields({locName: this.state.tempLocationName, address: this.state.tempAddress},'location');
         if(invalidFields.length === 0)
         {
+
+
             this.props.editLocation(this.state.locationName,this.state.address, this.state.tempLocationName, this.state.tempAddress);
-            this.props.showGrowl(msgSaveLocation)
+            this.props.showGrowl(msgSaveLocation);
             this.setState({
                 locationName: this.state.tempLocationName,
                 address: this.state.tempAddress,
@@ -83,44 +80,44 @@ class Location extends React.Component {
 
 
 
-    }
+    };
 
     EditCard = () => {
-        this.props.showGrowl(null)
+        this.props.showGrowl(null);
         this.setState({
             editMode: true,
         });
-    }
+    };
 
     deleteCategory = () => {
         this.props.deleteLocation( this.props.catName, this.state.tempLocationName);
         this.props.showGrowl(msgDeleteLocation);
-    }
+    };
 
     ChangeText = (e, type) => {
         switch (type) {
             case 'name': {
-                this.setState({tempLocationName: e.target.value})
+                this.setState({tempLocationName: e.target.value});
                 break;
             }
             case 'address': {
-                this.setState({tempAddress: e.target.value})
+                this.setState({tempAddress: e.target.value});
                 break;
             }
         }
-    }
+    };
 
     cancelEdit = () => {
         this.props.showGrowl(msgCance);
         this.setState({
             editMode: false,
         })
-    }
+    };
 
     setNewMarker = () => {
         this.props.showGrowl();
         this.props.changeMapLocation(this.state.lat, this.state.long);
-    }
+    };
 
     _editLocation() {
 
@@ -173,7 +170,7 @@ class Location extends React.Component {
                         <Button bsStyle="success"
                                 style={{borderRadius: '50%', outline: 'none'}}
                                 onClick={() => this.setNewMarker()}>
-                            <i className="round fa fa-map-marker " aria-hidden="true"></i>
+                            <i className="round fa fa-map-marker "/>
                         </Button>
                         <h3>{this.state.locationName} </h3>
                         <h4>{this.state.address}</h4>

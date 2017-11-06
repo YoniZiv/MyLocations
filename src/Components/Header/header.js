@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from "react";
-import { Button, MenuItem, Nav, NavDropdown, NavItem, Navbar, Container } from 'react-bootstrap';
+import React, { PropTypes } from "react";
+import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
 
-// export class Header extends Component {
+
 const Header = ({ title, subTitle }) => (
   <section id="app-header">
     <Wrapper>

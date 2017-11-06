@@ -2,11 +2,8 @@ import React from "react";
 import headerText from "../../assets/header-text";
 import Header from "../Header/header";
 import AppContainer from "../../StyledComponents/app-container";
-import HamCarousel from "../Carousel/carousel";
-import LocationsMap from "../Map/map";
 import {Col, Grid, Row} from "react-bootstrap";
 import {Locations} from "../Locations/locations";
-import Category from "../Category/category";
 import Categories from "../Categories/Categories";
 
 const Home = () => (

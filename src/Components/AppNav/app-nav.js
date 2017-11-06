@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, MenuItem, Nav, NavDropdown, NavItem, Navbar } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 export class AppNav extends Component {
@@ -10,7 +10,7 @@ export class AppNav extends Component {
           <Navbar inverse collapseOnSelect style={ {marginBottom: 0, borderRadius: 0} }>
             <Navbar.Header>
               <Navbar.Brand>
-                <Link to="/"> <i className="round fa fa-map-marker " aria-hidden="true"></i>  My Locations</Link>
+                <Link to="/"> <i className="round fa fa-map-marker " />  My Locations</Link>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
