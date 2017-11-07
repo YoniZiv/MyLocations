@@ -1,6 +1,6 @@
 import {applyMiddleware, compose, createStore} from "redux";
-import rootReducer from "../Redux/Reducers/root"
-import middleware from "./Middleware/common";
+import rootReducer from "./reducers/root"
+import middleware from "./middleware/common";
 import {autoRehydrate} from "redux-persist";
 
 const storeEnhancers = compose(
@@ -13,6 +13,6 @@ const storeEnhancers = compose(
 const store = createStore(
     rootReducer,
     storeEnhancers
-)
+);
 
 export default store

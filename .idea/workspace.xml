@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="333f283d-7879-42d5-b596-63c7e83ab7bc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.firebaserc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/database.rules.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/firebase.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Auth/Login/login.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Carousel/carousel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Slavs/slavs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/common/growlMessage.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/firebase/firebase.js" afterPath="" />
+    <list default="true" id="333f283d-7879-42d5-b596-63c7e83ab7bc" name="Default" comment="Refactor">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Components/app-nav/app-nav.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Components/categories-page/categories-list/categories-list.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Components/categories-page/categories-list/category/category.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Components/categories-page/categories-page.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Components/locations-page/locations-list/location/location.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Components/locations-page/locations-list/locations-list.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Redux/actions/categories-actions.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/AppNav/app-nav.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Categories/Categories.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Category/category.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Home/home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Location/location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Locations/locations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Components/Map/map.css" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Components/Footer/footer.js" afterPath="$PROJECT_DIR$/src/Components/footer/footer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Components/Header/header.js" afterPath="$PROJECT_DIR$/src/Components/header/header.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Components/Main/main.js" afterPath="$PROJECT_DIR$/src/Components/main/main.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Components/Map/map.js" afterPath="$PROJECT_DIR$/src/Components/map/map.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Components/Profile/profile.js" afterPath="$PROJECT_DIR$/src/Components/locations-page/locations-page.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Actions/categoriesActions.js" afterPath="$PROJECT_DIR$/src/Redux/actions/locations-actions.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Actions/mapActions.js" afterPath="$PROJECT_DIR$/src/Redux/actions/map-actions.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Constants/actionTypes.js" afterPath="$PROJECT_DIR$/src/Redux/constants/actionTypes.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Constants/growlMessages.js" afterPath="$PROJECT_DIR$/src/Redux/constants/growlMessages.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Middleware/common.js" afterPath="$PROJECT_DIR$/src/Redux/middleware/common.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Reducers/categories.js" afterPath="$PROJECT_DIR$/src/Redux/reducers/categories.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Reducers/locations.js" afterPath="$PROJECT_DIR$/src/Redux/reducers/locations.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Reducers/map.js" afterPath="$PROJECT_DIR$/src/Redux/reducers/map.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Redux/Reducers/root.js" afterPath="$PROJECT_DIR$/src/Redux/reducers/root.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Categories/Categories.js" afterPath="$PROJECT_DIR$/src/Components/Categories/Categories.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Category/category.js" afterPath="$PROJECT_DIR$/src/Components/Category/category.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Footer/footer.js" afterPath="$PROJECT_DIR$/src/Components/Footer/footer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Header/header.js" afterPath="$PROJECT_DIR$/src/Components/Header/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Home/home.js" afterPath="$PROJECT_DIR$/src/Components/Home/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Location/location.js" afterPath="$PROJECT_DIR$/src/Components/Location/location.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Locations/locations.js" afterPath="$PROJECT_DIR$/src/Components/Locations/locations.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Main/main.js" afterPath="$PROJECT_DIR$/src/Components/Main/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Components/Map/map.js" afterPath="$PROJECT_DIR$/src/Components/Map/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Redux/Constants/growlMessages.js" afterPath="$PROJECT_DIR$/src/Redux/Constants/growlMessages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Redux/Reducers/locations.js" afterPath="$PROJECT_DIR$/src/Redux/Reducers/locations.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Redux/store.js" afterPath="$PROJECT_DIR$/src/Redux/store.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StyledComponents/app-container.js" afterPath="$PROJECT_DIR$/src/StyledComponents/app-container.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/header-text.js" afterPath="$PROJECT_DIR$/src/assets/header-text.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/validator.js" afterPath="$PROJECT_DIR$/src/common/validator.js" />
     </list>
@@ -41,41 +53,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="categories.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/categories.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="store.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Redux/store.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="18" />
+            <state relative-caret-position="204">
+              <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/map.js">
+      <file leaf-file-name="categories-actions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Redux/actions/categories-actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="340">
+              <caret line="20" column="3" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/footer/footer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="location.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Location/location.js">
+        <entry file="file://$PROJECT_DIR$/src/Components/locations-page/locations-list/location/location.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="622">
-              <caret line="86" column="6" lean-forward="true" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
+            <state relative-caret-position="194">
+              <caret line="207" column="40" lean-forward="false" selection-start-line="207" selection-start-column="40" selection-end-line="207" selection-end-column="40" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -83,53 +95,65 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header-text.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/assets/header-text.js">
+      <file leaf-file-name="locations-list.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/locations-page/locations-list/locations-list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="root.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/root.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="19" column="52" lean-forward="false" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+            <state relative-caret-position="197">
+              <caret line="153" column="48" lean-forward="false" selection-start-line="153" selection-start-column="48" selection-end-line="153" selection-end-column="48" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="validator.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/common/validator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="68">
+              <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="category.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/categories-page/categories-list/category/category.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="84" column="6" lean-forward="false" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="locations.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/locations.js">
+        <entry file="file://$PROJECT_DIR$/src/Redux/reducers/locations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="449">
+              <caret line="57" column="2" lean-forward="false" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/main/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="categories-list.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/categories-page/categories-list/categories-list.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -147,13 +171,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Locations</find>
-      <find>aaaa</find>
-      <find>locations</find>
-      <find>cate</find>
-      <find>action</find>
-      <find>aciton</find>
-      <find>vali</find>
       <find>valida</find>
       <find>rout</find>
       <find>router</find>
@@ -177,6 +194,13 @@
       <find>map</find>
       <find>==</find>
       <find>sw</find>
+      <find>styled.</find>
+      <find>this.props</find>
+      <find>Groupe</find>
+      <find>_</find>
+      <find>AppContainer</find>
+      <find>disposeCategory</find>
+      <find>_.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,53 +209,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Components/Nav/nav.js" />
-        <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/Components/Container/container.js" />
-        <option value="$PROJECT_DIR$/src/StyledComponents/app-container.js" />
-        <option value="$PROJECT_DIR$/firebase-debug.log" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/Components/Carousel/carousel.js" />
-        <option value="$PROJECT_DIR$/src/firebase/firebase.js" />
-        <option value="$PROJECT_DIR$/src/Components/Main/map.css" />
-        <option value="$PROJECT_DIR$/src/Location.js" />
-        <option value="$PROJECT_DIR$/src/Location/Location.scss" />
-        <option value="$PROJECT_DIR$/src/Location/Location.js" />
-        <option value="$PROJECT_DIR$/src/Components/Slavs/slavs.js" />
-        <option value="$PROJECT_DIR$/src/Location/location.js" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/Category/category.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Actions/mapActions.js" />
         <option value="$PROJECT_DIR$/src/Redux/Actions/growlActions.js" />
         <option value="$PROJECT_DIR$/src/Redux/Reducers/growl.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Reducers/map.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Reducers/root.js" />
         <option value="$PROJECT_DIR$/src/common/growlMessage.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Constants/actionTypes.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Actions/categoriesActions.js" />
-        <option value="$PROJECT_DIR$/src/App.css" />
-        <option value="$PROJECT_DIR$/src/Redux/Middleware/common.js" />
-        <option value="$PROJECT_DIR$/src/Components/AppNav/app-nav.js" />
-        <option value="$PROJECT_DIR$/src/Components/Profile/profile.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Reducers/locations.js" />
-        <option value="$PROJECT_DIR$/src/Components/Header/header.js" />
         <option value="$PROJECT_DIR$/src/Components/Auth/Login/login.js" />
-        <option value="$PROJECT_DIR$/src/Components/Main/main.js" />
-        <option value="$PROJECT_DIR$/src/Components/Map/map.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Reducers/categories.js" />
+        <option value="$PROJECT_DIR$/src/Components/AppNav/app-nav.js" />
+        <option value="$PROJECT_DIR$/src/Components/Category/category.js" />
         <option value="$PROJECT_DIR$/src/Components/Categories/Categories.js" />
-        <option value="$PROJECT_DIR$/src/common/validator.js" />
+        <option value="$PROJECT_DIR$/src/Components/Header/header.js" />
+        <option value="$PROJECT_DIR$/src/Components/Location/location.js" />
+        <option value="$PROJECT_DIR$/src/Components/Map/map.css" />
+        <option value="$PROJECT_DIR$/src/Components/Locations/locations.js" />
+        <option value="$PROJECT_DIR$/src/Components/Map/map.js" />
+        <option value="$PROJECT_DIR$/src/Components/Profile/profile.js" />
+        <option value="$PROJECT_DIR$/src/Components/locations-page/Locations/locations-list.js" />
         <option value="$PROJECT_DIR$/src/Components/Footer/footer.js" />
         <option value="$PROJECT_DIR$/src/Components/Home/home.js" />
-        <option value="$PROJECT_DIR$/src/Components/Category/category.js" />
-        <option value="$PROJECT_DIR$/src/Components/Locations/locations.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Constants/growlMessages.js" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/Redux/store.js" />
-        <option value="$PROJECT_DIR$/src/Redux/Reducers/categories.js" />
+        <option value="$PROJECT_DIR$/src/Components/categories-page/categories-page.js" />
+        <option value="$PROJECT_DIR$/src/Components/Main/main.js" />
+        <option value="$PROJECT_DIR$/src/App.css" />
+        <option value="$PROJECT_DIR$/src/Components/locations-page/locations-page.js" />
+        <option value="$PROJECT_DIR$/src/StyledComponents/app-container.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/Components/Location/location.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Constants/actionTypes.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Constants/growlMessages.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Middleware/common.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Actions/categoriesActions.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Actions/mapActions.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Actions/locations-actions.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Actions/categories-actions.js" />
+        <option value="$PROJECT_DIR$/src/Redux/actions/categoriesActions.js" />
+        <option value="$PROJECT_DIR$/src/Redux/middleware/common.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Reducers/root.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Reducers/map.js" />
+        <option value="$PROJECT_DIR$/src/Redux/Reducers/locations.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/Redux/reducers/categories.js" />
+        <option value="$PROJECT_DIR$/src/Redux/actions/locations-actions.js" />
+        <option value="$PROJECT_DIR$/src/Redux/reducers/map.js" />
+        <option value="$PROJECT_DIR$/src/Redux/reducers/root.js" />
         <option value="$PROJECT_DIR$/src/assets/header-text.js" />
+        <option value="$PROJECT_DIR$/src/Redux/store.js" />
+        <option value="$PROJECT_DIR$/src/Redux/actions/categories-actions.js" />
+        <option value="$PROJECT_DIR$/src/Components/categories-page/categories-list/category/category.js" />
+        <option value="$PROJECT_DIR$/src/Redux/reducers/locations.js" />
+        <option value="$PROJECT_DIR$/src/Components/main/main.js" />
+        <option value="$PROJECT_DIR$/src/Components/categories-page/categories-list/categories-list.js" />
+        <option value="$PROJECT_DIR$/src/Components/locations-page/locations-list/location/location.js" />
+        <option value="$PROJECT_DIR$/src/Components/locations-page/locations-list/locations-list.js" />
+        <option value="$PROJECT_DIR$/src/common/validator.js" />
       </list>
     </option>
   </component>
@@ -273,7 +301,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -293,28 +320,36 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="welldone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="welldone" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="StyledComponents" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Community club/community-club" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="commit&#9;ACTION&#9;CheckinProject&#10;eslin&#9;null&#9;null&#10;valida&#9;FILE&#9;file://C:/Users/Yoni/Desktop/Welldone/welldone/src/common/validator.js&#10;commi&#9;ACTION&#9;CheckinProject&#10;comm&#9;ACTION&#9;CheckinProject&#10;main&#9;FILE&#9;file:///Users/hadar.geva/projects/yoni/welldone/src/Components/Main/main.js&#10;fo&#9;FILE&#9;file:///Users/hadar.geva/projects/yoni/welldone/src/Components/Footer/footer.js&#10;foot&#9;FILE&#9;file:///Users/hadar.geva/projects/yoni/welldone/src/Components/Footer/footer.js&#10;web&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/react-scripts/config/webpack.config.dev.js&#10;webpack&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/react-scripts/config/webpack.config.dev.js&#10;we&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/react-scripts/config/webpack.config.dev.js&#10;webpac&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/google-maps-react/webpack.config.js&#10;replace&#9;ACTION&#9;Replace&#10;login&#9;FILE&#9;file:///Users/yonatanziv/Work/Playground/playground1/src/Components/Auth/Login/login.js" />
+    <property name="SearchEverywhereHistoryKey" value="comm&#9;ACTION&#9;CheckinProject&#10;va&#9;FILE&#9;file://C:/Users/Yoni/Desktop/Welldone/welldone/src/common/validator.js&#10;commi&#9;ACTION&#9;CheckinProject&#10;settings&#9;ACTION&#9;ShowSettings&#10;commit&#9;ACTION&#9;CheckinProject&#10;eslin&#9;null&#9;null&#10;valida&#9;FILE&#9;file://C:/Users/Yoni/Desktop/Welldone/welldone/src/common/validator.js&#10;main&#9;FILE&#9;file:///Users/hadar.geva/projects/yoni/welldone/src/Components/Main/main.js&#10;fo&#9;FILE&#9;file:///Users/hadar.geva/projects/yoni/welldone/src/Components/Footer/footer.js&#10;foot&#9;FILE&#9;file:///Users/hadar.geva/projects/yoni/welldone/src/Components/Footer/footer.js&#10;web&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/react-scripts/config/webpack.config.dev.js&#10;webpack&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/react-scripts/config/webpack.config.dev.js&#10;we&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/react-scripts/config/webpack.config.dev.js&#10;webpac&#9;FILE&#9;file://C:/Users/Daniel/Desktop/playground1/playground1/node_modules/google-maps-react/webpack.config.js&#10;replace&#9;ACTION&#9;Replace&#10;login&#9;FILE&#9;file:///Users/yonatanziv/Work/Playground/playground1/src/Components/Auth/Login/login.js" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Yoni\Desktop\Welldone\welldone\src\Components\categories-page\categories-list" />
+      <recent name="C:\Users\Yoni\Desktop\Welldone\welldone\src\Components\categories-page" />
+      <recent name="C:\Users\Yoni\Desktop\Welldone\welldone\src\Components\locations-page\Locations" />
+      <recent name="C:\Users\Yoni\Desktop\Welldone\welldone\src\Components\locations-page" />
       <recent name="C:\Users\Yoni\Desktop\Welldone\welldone\src\Components" />
-      <recent name="C:\Users\Daniel\Desktop\playground1\playground1\src\Location" />
-      <recent name="C:\Users\Daniel\Desktop\playground1\playground1\src\Components\Map" />
-      <recent name="$PROJECT_DIR$/src/Components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -737,7 +772,8 @@
       <workItem from="1500910033714" duration="5597000" />
       <workItem from="1509095543023" duration="25010000" />
       <workItem from="1509361383354" duration="9431000" />
-      <workItem from="1509902925423" duration="29769000" />
+      <workItem from="1509902925423" duration="29885000" />
+      <workItem from="1509993972400" duration="20942000" />
     </task>
     <task id="LOCAL-00001" summary="aa">
       <created>1509446928256</created>
@@ -781,11 +817,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509965275816</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Finish before refactor">
+      <created>1509980730250</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1509980730250</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195498000" />
+    <option name="totallyTimeSpent" value="216556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -793,14 +836,14 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17281349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19393283" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19393283" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -837,32 +880,18 @@
     <MESSAGE value="almost done" />
     <MESSAGE value="almost done++" />
     <MESSAGE value="1st refactor stage" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st refactor stage" />
+    <MESSAGE value="Finish before refactor" />
+    <MESSAGE value="Refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/react-redux/es/index.js" />
-    <entry file="file://$PROJECT_DIR$/src/Location/Location.scss" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="309" column="35" lean-forward="true" selection-start-line="309" selection-start-column="35" selection-end-line="309" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-bootstrap/es/Button.js" />
-    <entry file="file://$PROJECT_DIR$/src/Components/Map/map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/google-maps-react/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -884,22 +913,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Slavs/slavs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="106" lean-forward="false" selection-start-line="7" selection-start-column="93" selection-end-line="7" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Slavs/slavs.js" />
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/html5-schema/html5/structural.rnc" />
     <entry file="file://$PROJECT_DIR$/node_modules/react/lib/React.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -917,141 +931,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/growl.js" />
     <entry file="file://$PROJECT_DIR$/src/Redux/Actions/growlActions.js" />
-    <entry file="file://$PROJECT_DIR$/src/Redux/Constants/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Actions/mapActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Actions/categoriesActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="23" column="54" lean-forward="false" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="80" column="25" lean-forward="false" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Middleware/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="86" lean-forward="false" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/AppNav/app-nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="12" column="81" lean-forward="false" selection-start-line="12" selection-start-column="81" selection-end-line="12" selection-end-column="81" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Profile/profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="2" lean-forward="false" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/growlMessage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Auth/Login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Main/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Map/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Categories/Categories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Footer/footer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="59" column="80" lean-forward="false" selection-start-line="59" selection-start-column="70" selection-end-line="59" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Header/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Home/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/growlMessage.js" />
+    <entry file="file://$PROJECT_DIR$/src/Components/Auth/Login/login.js" />
     <entry file="file://$PROJECT_DIR$/proxy.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,50 +944,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="208" column="4" lean-forward="false" selection-start-line="208" selection-start-column="4" selection-end-line="208" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/registerServiceWorker.js">
+    <entry file="file://$PROJECT_DIR$/src/firebase/firebase.js" />
+    <entry file="file://$PROJECT_DIR$/.firebaserc" />
+    <entry file="file://$PROJECT_DIR$/database.rules.json" />
+    <entry file="file://$PROJECT_DIR$/firebase.json" />
+    <entry file="file://$PROJECT_DIR$/src/Components/app-nav/app-nav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="87" column="13" lean-forward="false" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Category/category.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+        <state relative-caret-position="323">
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding>
-            <element signature="e#0#25#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Locations/locations.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/header/header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1870">
-          <caret line="78" column="163" lean-forward="false" selection-start-line="78" selection-start-column="163" selection-end-line="78" selection-end-column="163" />
+        <state relative-caret-position="408">
+          <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
           <folding>
-            <element signature="e#0#25#0" expanded="false" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Constants/growlMessages.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Map/map.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="146" lean-forward="false" selection-start-line="8" selection-start-column="146" selection-end-line="8" selection-end-column="146" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/validator.js">
+    <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        <state relative-caret-position="34">
+          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/map/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1111,29 +1017,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/map.js">
+    <entry file="file://$PROJECT_DIR$/src/registerServiceWorker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="1479">
+          <caret line="87" column="13" lean-forward="false" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/locations.js">
+    <entry file="file://$PROJECT_DIR$/src/StyledComponents/app-container.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/constants/actionTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/constants/growlMessages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/actions/map-actions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -1141,86 +1069,164 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/store.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/categories-page/categories-page.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/root.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Redux/Reducers/categories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="19" column="52" lean-forward="false" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        <state relative-caret-position="272">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Location/location.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="86" column="6" lean-forward="true" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/firebase/firebase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.firebaserc">
+    <entry file="file://$PROJECT_DIR$/src/Components/locations-page/locations-page.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/middleware/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="35" lean-forward="false" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database.rules.json">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/firebase.json">
+    <entry file="file://$PROJECT_DIR$/src/Redux/reducers/categories.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="415">
+          <caret line="28" column="2" lean-forward="false" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/actions/locations-actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="3" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/reducers/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/reducers/root.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/header-text.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/actions/categories-actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="3" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/footer/footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/categories-page/categories-list/category/category.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="84" column="6" lean-forward="false" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Redux/reducers/locations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="57" column="2" lean-forward="false" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/main/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/categories-page/categories-list/categories-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/locations-page/locations-list/location/location.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="207" column="40" lean-forward="false" selection-start-line="207" selection-start-column="40" selection-end-line="207" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/locations-page/locations-list/locations-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="153" column="48" lean-forward="false" selection-start-line="153" selection-start-column="48" selection-end-line="153" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/validator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
           <folding />
         </state>
       </provider>

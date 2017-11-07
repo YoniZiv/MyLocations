@@ -1,17 +1,9 @@
-import * as _ from "lodash";
+import { isEmpty } from 'lodash';
 
-export const validateFields = (fieldsContent) => {
-    // switch (entityType) {
-    //     case 'category': {
-    //         _.isEmpty(fieldsContent.catName) ? invalidsArray.push('catName') : null;
-    //         break;
-    //     }
-    //     case 'location': {
-    const invalidsArray = Object.keys(fieldsContent).filter(key => {
-        return _.isEmpty(fieldsContent[key])
-    });
-    //     break;
-    // }
-    return invalidsArray;
-
+// Fields Validation method. Returns fields that came in empty
+export const validateFields = ( fieldsContent ) => {
+    return Object.keys( fieldsContent ).filter( key => {
+        return isEmpty( fieldsContent[ key ] )
+    } );
 }
+
