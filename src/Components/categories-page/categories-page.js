@@ -1,7 +1,7 @@
 import React from 'react';
 import headerText from '../../assets/header-text';
 import Header from '../header/header';
-import AppContainer from '../../StyledComponents/app-container';
+import AppContainer from '../styled-components/app-container';
 import { Col, Grid, Row } from 'react-bootstrap';
 import CategoriesList from './categories-list/categories-list';
 

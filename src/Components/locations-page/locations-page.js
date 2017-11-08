@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../header/header";
-import AppContainer from "../../StyledComponents/app-container";
+import AppContainer from "../styled-components/app-container";
 import headerText from "../../assets/header-text";
 import LocationsList from "./locations-list/locations-list";
 
